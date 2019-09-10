@@ -54,7 +54,7 @@ A basic `csproj` file will now look like the following code:
 </Project>
 ```
 
-For more information on the SDK style of project, see the [documentation](https://docs.microsoft.com/en-us/dotnet/core/tools/csproj).
+For more information on the SDK style of project, see the [documentation](https://docs.microsoft.com/dotnet/core/tools/csproj).
 
 ## Update all dependencies to latest versions
 
@@ -62,7 +62,7 @@ One of the most difficult parts of moving to .NET Core is ensuring that third-pa
 
 In cases where .NET Standard is not supported, there is also the option of being able to run libraries compiled for .NET Framework on .NET Core. Starting with .NET Standard 2.0, a .NET Framework compatibility mode was introduced that allows libraries compiled against the .NET Framework to run on .NET Core. These libraries will not magically find APIs that don't exist, so there is the chance that they will fail at runtime; thus, targeted testing of the scenarios these libraries are used for is recommended. A warning will appear at build time that there were restored for .NET Framework. Although this scenario may cause some errors, it may also help unblock some porting scenarios.
 
-For more information on supporting third-party dependencies, see the [documentation](https://docs.microsoft.com/en-us/dotnet/core/porting/third-party-deps).
+For more information on supporting third-party dependencies, see the [documentation](https://docs.microsoft.com/dotnet/core/porting/third-party-deps).
 
 ## Update project to run on .NET 4.7.2 or higher
 
@@ -70,11 +70,11 @@ For more information on supporting third-party dependencies, see the [documentat
 
 For example, in .NET Framework 4.5, the algorithm used by `List.Sort` was changed from a quick sort to an introspective sort. Both of these sorting algorithms are considered unstable (where items that are equal may not be in the same order each time), but users may have taken a dependency on the ordering of the order of these unstable elements. In order to preserve this old behavior, a quirk was added that would continue to use the quick sort in later versions if the application targeted .NET Framework 4.0 but ran on .NET 4.5 or later. However, if the application were to be retargeted to .NET Framework 4.5 or later, then it would automatically opt into the introspective sort.
 
-The majority of these kinds of breaking changes are manifest when an application takes a dependency on an implementation detail (such as the undefined behavior of an unstable sort). To review what possible changes may impact your application, see the [documentation](https://docs.microsoft.com/en-us/dotnet/framework/migration-guide/application-compatibility) for this topic.
+The majority of these kinds of breaking changes are manifest when an application takes a dependency on an implementation detail (such as the undefined behavior of an unstable sort). To review what possible changes may impact your application, see the [documentation](https://docs.microsoft.com/dotnet/framework/migration-guide/application-compatibility) for this topic.
 
 ## Mitigate unsupported APIs
 
-At this point, we are ready at a tooling level to make the switch to .NET Standard. However, there may still be APIs in the application that are not supported. Some of these types may be available via the [Windows Compatibility Pack](https://docs.microsoft.com/en-us/dotnet/core/porting/windows-compat-pack). This package adds support for around 20,000 APIs, including registry, WMI, Directory Services, among many more areas.
+At this point, we are ready at a tooling level to make the switch to .NET Standard. However, there may still be APIs in the application that are not supported. Some of these types may be available via the [Windows Compatibility Pack](https://docs.microsoft.com/dotnet/core/porting/windows-compat-pack). This package adds support for around 20,000 APIs, including registry, WMI, Directory Services, among many more areas.
 
 Some of the high-level areas that are not supported in .NET Core:
 
@@ -84,7 +84,7 @@ Some of the high-level areas that are not supported in .NET Core:
 - Security Transparency
 - System.EnterpriseServices
 
-For more information on areas that are not supported, see the [documentation](https://docs.microsoft.com/en-us/dotnet/core/porting/net-framework-tech-unavailable).
+For more information on areas that are not supported, see the [documentation](https://docs.microsoft.com/dotnet/core/porting/net-framework-tech-unavailable).
 
 ## Move to .NET Standard
 
