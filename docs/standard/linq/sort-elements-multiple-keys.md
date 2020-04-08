@@ -1,6 +1,10 @@
 ---
-title: "How to sort elements on multiple keys"
+title: "How to sort elements on multiple keys - LINQ to XML
+description: Sort XML elements on multiple keys
 ms.date: 07/20/2015
+dev_langs:
+  - "csharp"
+  - "vb"
 ms.assetid: 3b2760b6-d607-4ac7-b784-5c6524e2a0e0
 ---
 
@@ -8,9 +12,9 @@ ms.assetid: 3b2760b6-d607-4ac7-b784-5c6524e2a0e0
 
 This article shows how to sort on multiple keys.
 
-## Example: Sort XML that isn't in a namespace
+## Example: Sort XML elements on multiple keys
 
-This example sorts by shipping postal code (primary) and order date. It uses the XML document in [Sample XML file: Customers and orders](sample-xml-file-customers-orders.md).
+This example sorts by shipping postal code (primary) and order date. It uses XML document [Sample XML file: Customers and orders](sample-xml-file-customers-orders.md).
 
 ```csharp
 XElement co = XElement.Load("CustomersOrders.xml");
@@ -75,7 +79,7 @@ CustomerID:LAZYK EmployeeID:8 ShipPostalCode:99362 OrderDate:5/22/1997
 
 ## Example: Sort XML that's in a namespace
 
-The second example does the same sort as the first, but for XML that's in a namespace. It uses the XML document in [Sample XML file: Customers and orders in a namespace](sample-xml-file-customers-orders-namespace.md).
+This example does the same sort as the first, but for XML that's in a namespace. It uses XML document [Sample XML file: Customers and orders in a namespace](sample-xml-file-customers-orders-namespace.md).
 
 For more information, see [Namespaces overview](namespaces-overview.md).
 

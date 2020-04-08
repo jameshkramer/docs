@@ -1,6 +1,10 @@
 ---
-title: "How to write a query that finds elements based on context"
+title: How to write a query that finds elements based on context - LINQ to XML
+
 ms.date: 07/20/2015
+dev_langs:
+  - "csharp"
+  - "vb"
 ms.assetid: 3ff79ef0-fc8b-42fe-8cc0-10dc32b06b4e
 ---
 
