@@ -1,6 +1,6 @@
 ---
 title: "How to sort elements on multiple keys - LINQ to XML
-description: Sort XML elements on multiple keys
+description: Sort XML elements on multiple keys.
 ms.date: 07/20/2015
 dev_langs:
   - "csharp"
@@ -8,13 +8,13 @@ dev_langs:
 ms.assetid: 3b2760b6-d607-4ac7-b784-5c6524e2a0e0
 ---
 
-# How to sort elements on multiple keys
+# How to sort elements on multiple keys (LINQ to XML)
 
 This article shows how to sort on multiple keys.
 
 ## Example: Sort XML elements on multiple keys
 
-This example sorts by shipping postal code (primary) and order date. It uses XML document [Sample XML file: Customers and orders](sample-xml-file-customers-orders.md).
+This example sorts on two keys: shipping postal code (primary) and order date. It uses XML document [Sample XML file: Customers and orders](sample-xml-file-customers-orders.md).
 
 ```csharp
 XElement co = XElement.Load("CustomersOrders.xml");
@@ -102,6 +102,29 @@ foreach (var r in sortedElements)
         r.CustomerID, r.EmployeeID, r.ShipPostalCode, r.OrderDate);
 ```
 
+```vb
+Imports <xmlns='http://www.adventure-works.com'>
+
+Module Module1
+    Sub Main()
+        Dim co As XElement = XElement.Load("CustomersOrdersInNamespace.xml")
+        Dim result = _
+            From c In co.<Orders>.<Order> _
+            Order By c.<ShipInfo>.<ShipPostalCode>.Value, Convert.ToDateTime(c.<OrderDate>.Value) _
+            Select New With { _
+                .CustomerID = c.<CustomerID>.Value, _
+                .EmployeeID = c.<EmployeeID>.Value, _
+                .ShipPostalCode = c.<ShipInfo>.<ShipPostalCode>.Value, _
+                .OrderDate = Convert.ToDateTime(c.<OrderDate>.Value) _
+            }
+        For Each r In result
+            Console.WriteLine("CustomerID:{0} EmployeeID:{1} ShipPostalCode:{2} OrderDate:{3:d}", _
+                        r.CustomerID, r.EmployeeID, r.ShipPostalCode, r.OrderDate)
+        Next
+    End Sub
+End Module
+```
+
 The example produces this output:
 
 ```output
@@ -128,3 +151,7 @@ CustomerID:HUNGC EmployeeID:8 ShipPostalCode:97827 OrderDate:9/8/1997
 CustomerID:LAZYK EmployeeID:1 ShipPostalCode:99362 OrderDate:3/21/1997
 CustomerID:LAZYK EmployeeID:8 ShipPostalCode:99362 OrderDate:5/22/1997
 ```
+
+## See also
+
+- [Basic Queries (LINQ to XML) (Visual Basic)](../../visual-basic/programming-guide/concepts/linq/basic-queries-linq-to-xml.md)

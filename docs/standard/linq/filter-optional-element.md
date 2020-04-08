@@ -89,7 +89,7 @@ Child Four Text
 
 ## Example: Same search but for XML in a namespace
 
-The following example is the same query but for XML that is in a namespace. For more information, see [Namespaces overview](namespaces-overview.md).
+The following example is the same query but for XML that's  in a namespace. For more information, see [Namespaces overview](namespaces-overview.md).
 
 ```csharp
 XElement root = XElement.Parse(@"<Root xmlns='http://www.adatum.com'>

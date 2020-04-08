@@ -1,6 +1,6 @@
 ---
 title: How to write a query that finds elements based on context - LINQ to XML
-
+description: Write a query that selects elements based on context; for example, filter results based on preceding or following sibling elements.
 ms.date: 07/20/2015
 dev_langs:
   - "csharp"
@@ -8,13 +8,13 @@ dev_langs:
 ms.assetid: 3ff79ef0-fc8b-42fe-8cc0-10dc32b06b4e
 ---
 
-# How to write a query that finds elements based on context
+# How to write a query that finds elements based on context (LINQ to XML)
 
-Sometimes you might have to write a query that selects elements based on their context. You might want to filter based on preceding or following sibling elements. You might want to filter based on child or ancestor elements.
+Sometimes you might have to write a query that selects elements based on their context. For example, you might want to filter based on preceding or following sibling elements, or on child or ancestor elements.
 
-You can do this by writing a query and using the results of the query in the `Where` clause. If you have to first test against null, and then test the value, it's more convenient to do the query in a `Let` clause, and then use the results in the `Where` clause.
+You can do this by writing a query and using the results of the query in the `where` clause. If you have to first test against null, and then test the value, it's more convenient to do the query in a `let` clause, and then use the results in the `where` clause.
 
-## Example: Select `p` elements that are followed by `ul` elements
+## Example: Select `p` elements that are immediately followed by a `ul` element
 
 The following example selects all `p` elements that are immediately followed by a `ul` element.
 
@@ -88,7 +88,7 @@ id = 3
 id = 6
 ```
 
-## Example: In a namespace select `p` elements that are followed by `ul` elements
+## Example: In a namespace select `p` elements that are immediately followed by a `ul` element
 
 The following example shows the same query as above, but for XML that's in a namespace. For more information, see [Namespaces overview](namespaces-overview.md).
 
@@ -176,3 +176,4 @@ id = 6
 - <xref:System.Xml.Linq.XContainer.Descendants%2A>
 - <xref:System.Xml.Linq.XNode.ElementsAfterSelf%2A>
 - <xref:System.Linq.Enumerable.FirstOrDefault%2A>
+- [Basic Queries (LINQ to XML) (Visual Basic)](../../visual-basic/programming-guide/concepts/linq/basic-queries-linq-to-xml.md)
