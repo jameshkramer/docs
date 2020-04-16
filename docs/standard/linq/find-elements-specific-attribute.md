@@ -44,7 +44,7 @@ foreach (XElement el in list1)
     Console.WriteLine(el);
 ```
 
- This example produces the following output:
+ The example produces this output:
 
 ```output
 Results are identical

@@ -1,6 +1,6 @@
 ---
 title: How to generate XML from CSV files - LINQ to XML
-description:
+description: You can C# and Visual Basic to create XML from a comma-separated values (CSV) file. The example in this article shows how.
 ms.date: 07/20/2015
 dev_langs:
   - "csharp"
@@ -10,13 +10,11 @@ ms.assetid: 57b9ccde-f983-4a21-ae61-70ecede30307
 
 # How to generate XML from CSV files (LINQ to XML)
 
-This example shows how to use Language-Integrated Query (LINQ) and LINQ to XML to generate an XML file from a comma-separated value (CSV) file.
+You can use LINQ to XML in C# or Visual Basic to create XML from a comma-separated values (CSV) file.
 
-## Example
+## Example: Generate XML from a CSV file
 
-The following code performs a LINQ query on an array of strings.
-
-The query uses the `let` clause to split each string into an array of fields.
+This example does a LINQ query on an array of strings, then uses the `let` clause to split each string into an array of fields.
 
 ```csharp
 // Create the text file.
@@ -49,38 +47,38 @@ XElement cust = new XElement("Root",
 Console.WriteLine(cust);
 ```
 
-```vb  
-      ' Create the text file.  
-Dim csvString As String = "GREAL,Great Lakes Food Market,Howard Snyder,Marketing Manager,(503) 555-7555,2732 Baker Blvd.,Eugene,OR,97403,USA" & vbCrLf & _  
-    "HUNGC,Hungry Coyote Import Store,Yoshi Latimer,Sales Representative,(503) 555-6874,City Center Plaza 516 Main St.,Elgin,OR,97827,USA" & vbCrLf & _  
-    "LAZYK,Lazy K Kountry Store,John Steel,Marketing Manager,(509) 555-7969,12 Orchestra Terrace,Walla Walla,WA,99362,USA" & vbCrLf & _  
-    "LETSS,Let's Stop N Shop,Jaime Yorres,Owner,(415) 555-5938,87 Polk St. Suite 5,San Francisco,CA,94117,USA"  
-File.WriteAllText("cust.csv", csvString)  
-  
-' Read into an array of strings.  
-Dim source As String() = File.ReadAllLines("cust.csv")  
-Dim cust As XElement = _  
-    <Root>  
-        <%= From strs In source _  
-            Let fields = Split(strs, ",") _  
-            Select _  
-            <Customer CustomerID=<%= fields(0) %>>  
-                <CompanyName><%= fields(1) %></CompanyName>  
-                <ContactName><%= fields(2) %></ContactName>  
-                <ContactTitle><%= fields(3) %></ContactTitle>  
-                <Phone><%= fields(4) %></Phone>  
-                <FullAddress>  
-                    <Address><%= fields(5) %></Address>  
-                    <City><%= fields(6) %></City>  
-                    <Region><%= fields(7) %></Region>  
-                    <PostalCode><%= fields(8) %></PostalCode>  
-                    <Country><%= fields(9) %></Country>  
-                </FullAddress>  
-            </Customer> _  
-        %>  
-    </Root>  
-Console.WriteLine(cust)  
-```  
+```vb
+      ' Create the text file.
+Dim csvString As String = "GREAL,Great Lakes Food Market,Howard Snyder,Marketing Manager,(503) 555-7555,2732 Baker Blvd.,Eugene,OR,97403,USA" & vbCrLf & _
+    "HUNGC,Hungry Coyote Import Store,Yoshi Latimer,Sales Representative,(503) 555-6874,City Center Plaza 516 Main St.,Elgin,OR,97827,USA" & vbCrLf & _
+    "LAZYK,Lazy K Kountry Store,John Steel,Marketing Manager,(509) 555-7969,12 Orchestra Terrace,Walla Walla,WA,99362,USA" & vbCrLf & _
+    "LETSS,Let's Stop N Shop,Jaime Yorres,Owner,(415) 555-5938,87 Polk St. Suite 5,San Francisco,CA,94117,USA"
+File.WriteAllText("cust.csv", csvString)
+
+' Read into an array of strings.
+Dim source As String() = File.ReadAllLines("cust.csv")
+Dim cust As XElement = _
+    <Root>
+        <%= From strs In source _
+            Let fields = Split(strs, ",") _
+            Select _
+            <Customer CustomerID=<%= fields(0) %>>
+                <CompanyName><%= fields(1) %></CompanyName>
+                <ContactName><%= fields(2) %></ContactName>
+                <ContactTitle><%= fields(3) %></ContactTitle>
+                <Phone><%= fields(4) %></Phone>
+                <FullAddress>
+                    <Address><%= fields(5) %></Address>
+                    <City><%= fields(6) %></City>
+                    <Region><%= fields(7) %></Region>
+                    <PostalCode><%= fields(8) %></PostalCode>
+                    <Country><%= fields(9) %></Country>
+                </FullAddress>
+            </Customer> _
+        %>
+    </Root>
+Console.WriteLine(cust)
+```
 
 The example produces this output:
 
