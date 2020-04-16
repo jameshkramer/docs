@@ -1,6 +1,6 @@
 ---
 title: How to project an object graph - LINQ to XML
-description:
+description: You can use C# or Visual Basic to project, or populate, an object graph from XML. The example in this article shows how.
 ms.date: 07/20/2015
 dev_langs:
   - "csharp"
@@ -10,11 +10,11 @@ ms.assetid: 293d15d5-3eaf-48de-9a02-3e13cb117b5b
 
 # How to project an object graph (LINQ to XML)
 
-This topic illustrates how to project, or populate, an object graph from XML.
+This example below illustrates how to use C# or Visual Basic to project, or populate, an object graph from XML.
 
-## Example
+## Example: Populate an object graph from XML
 
-The following code populates an object graph with the `Address`, `PurchaseOrder`, and `PurchaseOrderItem` classes from the [Sample XML File: Typical Purchase Order (LINQ to XML)](./sample-xml-file-typical-purchase-order-linq-to-xml-1.md) XML document.
+The example populates an object graph with the `Address`, `PurchaseOrder`, and `PurchaseOrderItem` classes from XML document [Sample XML file: Typical purchase order (LINQ to XML)](sample-xml-file-typical-purchase-order.md).
 
 ```csharp
 class Address
@@ -496,7 +496,7 @@ Sub Main()
 End Sub  
 ```  
 
-In this example, the result of the LINQ query is returned as an <xref:System.Collections.Generic.IEnumerable%601> of `PurchaseOrderItem`. The items in the `PurchaseOrder` class are of type <xref:System.Collections.Generic.IEnumerable%601> of `PurchaseOrderItem`. The code uses the <xref:System.Linq.Enumerable.ToList%2A> extension method to create a <xref:System.Collections.Generic.List%601> collection from the results of the query.
+The result of the LINQ query is returned as an <xref:System.Collections.Generic.IEnumerable%601> of `PurchaseOrderItem`. The items in the `PurchaseOrder` class are of type <xref:System.Collections.Generic.IEnumerable%601> of `PurchaseOrderItem`. The code uses the <xref:System.Linq.Enumerable.ToList%2A> extension method to create a <xref:System.Collections.Generic.List%601> collection from the results of the query.
 
 The example produces this output:
 
