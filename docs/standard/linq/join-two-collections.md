@@ -1,33 +1,34 @@
 ---
-title: "How to join two collections (LINQ to XML) (C#)"
+title: How to join two collections - LINQ to XML
+description: An XSD file can establish relationships in an XML file, to enable joining of elements to create new types of elements. This article provides an example for C# and Visual Basic that joins elements and creates a new XML document.
 ms.date: 07/20/2015
 ms.assetid: 7b817ede-911a-4cff-9dd3-639c3fc228c9
+dev_langs:
+  - "csharp"
+  - "vb"
 ---
-# How to join two collections (LINQ to XML) (C#)
 
-An element or attribute in an XML document can sometimes refer to another element or attribute. For example, the [Sample XML File: Customers and Orders (LINQ to XML)](./sample-xml-file-customers-and-orders-linq-to-xml-2.md) XML document contains a list of customers and a list of orders. Each `Customer` element contains a `CustomerID` attribute. Each `Order` element contains a `CustomerID` element. The `CustomerID` element in each order refers to the `CustomerID` attribute in a customer.
+# How to join two collections (LINQ to XML)
 
-The topic [Sample XSD File: Customers and Orders](./sample-xsd-file-customers-and-orders1.md) contains an XSD that can be used to validate this document. It uses the `xs:key` and `xs:keyref` features of XSD to establish that the `CustomerID` attribute of the `Customer` element is a key, and to establish a relationship between the `CustomerID` element in each `Order` element and the `CustomerID` attribute in each `Customer` element.
+An XSD file can establish relationships in an XML file, to enable joining of elements to create new types of elements. This article provides an example for C# and Visual Basic that joins elements and creates a new XML document.
 
-With [!INCLUDE[sqltecxlinq](~/includes/sqltecxlinq-md.md)], you can take advantage of this relationship by using the `join` clause.
+An element or attribute in an XML document can sometimes refer to another element or attribute. For example, XML document [Sample XML file: Customers and orders](sample-xml-file-customers-orders.md) contains a list of customers and a list of orders. Every `Customer` element has a `CustomerID` attribute, and every `Order` element contains a `CustomerID` element. The `CustomerID` element value in an `Order` element refers to the `Customer` element that has a matching `CustomerID` attribute value.
 
-Because there is no index available, such joining will have poor run-time performance.
+The article [Sample XSD file: Customers and orders](sample-xsd-file-customers-orders.md) contains an XSD that can be used to validate the `Customers and orders` document. It uses the `xs:key` and `xs:keyref` features of XSD to establish that the `CustomerID` attribute of the `Customer` element is a key, and to establish a relationship between the key and the `CustomerID` element of the  `Order`elements.
 
-For more detailed information about `join`, see [Join Operations (C#)](./join-operations.md).
+With LINQ to XML, you can take advantage of this relationship by using the `join` clause to join customer information to order information.
 
-## Example
+For more detailed information about `join`, see [Join Operations (C#)](../../csharp/programming-guide/concepts/linq/join-operations.md) and [Join Operations (Visual Basic)](../../visual-basic/programming-guide/concepts/linq/join-operations.md).
+> [!NOTE]
+> Joins are done using linear searches. There are no indexes to boost search performance.
 
-The following example joins the `Customer` elements to the `Order` elements, and generates a new XML document that includes the `CompanyName` element in the orders.
+## Example: Create a new XML document that has `Customer` and `Order` elements joined
 
-Before executing the query, the example validates that the document complies with the schema in [Sample XSD File: Customers and Orders](./sample-xsd-file-customers-and-orders1.md). This ensures that the join clause will always work.
+The following example generates a new XML document that joins the `Customer` elements of [Sample XML file: Customers and orders](sample-xml-file-customers-orders.md) to the `Order` elements, and includes the `CompanyName` element in the orders.
 
-This query first retrieves all `Customer` elements, and then joins them to the `Order` elements. It selects only the orders for customers with a `CustomerID` greater than "K". It then projects a new `Order` element that contains the customer information within each order.
+Before executing the query, the example validates that the document complies with the schema in [Sample XSD file: Customers and orders](sample-xsd-file-customers-orders.md). This ensures that the join clause will work.
 
-This example uses the following XML document: [Sample XML File: Customers and Orders (LINQ to XML)](./sample-xml-file-customers-and-orders-linq-to-xml-2.md).
-
-This example uses the following XSD schema: [Sample XSD File: Customers and Orders](./sample-xsd-file-customers-and-orders1.md).
-
-Joining in this fashion will not perform well. Joins are performed via a linear search. There are no hash tables or indexes to help with performance.
+The query selects only the orders for customers with a `CustomerID` greater than "K". It projects  new `Order` elements that contains the customer information within each order.
 
 ```csharp
 XmlSchemaSet schemas = new XmlSchemaSet();
@@ -70,7 +71,59 @@ if (!errors)
 }
 ```
 
-This code produces the following output:
+```vb
+Public Class Program
+    Public Shared errors As Boolean = False
+
+    Public Shared Function LamValidEvent(ByVal o As Object, _
+                 ByVal e As ValidationEventArgs) As Boolean
+        Console.WriteLine("{0}", e.Message)
+        errors = True
+    End Function
+
+    Shared Sub Main()
+        Dim schemas As New XmlSchemaSet()
+        schemas.Add("", "CustomersOrders.xsd")
+
+        Console.Write("Attempting to validate, ")
+        Dim custOrdDoc As XDocument = XDocument.Load("CustomersOrders.xml")
+
+        custOrdDoc.Validate(schemas, Function(o, e) LamValidEvent(0, e))
+        If errors Then
+            Console.WriteLine("custOrdDoc did not validate")
+        Else
+            Console.WriteLine("custOrdDoc validated")
+        End If
+
+        If Not errors Then
+            'Join customers and orders, and create a new XML document with
+            ' a different shape.
+            'The new document contains orders only for customers with a
+            ' CustomerID > 'K'.
+            Dim custOrd As XElement = custOrdDoc.<Root>.FirstOrDefault
+            Dim newCustOrd As XElement = _
+                <Root>
+                    <%= From c In custOrd.<Customers>.<Customer> _
+                        Join o In custOrd.<Orders>.<Order> _
+                        On c.@CustomerID Equals o.<CustomerID>.Value _
+                        Where c.@CustomerID.CompareTo("K") > 0 _
+                        Select _
+                        <Order>
+                            <CustomerID><%= c.@CustomerID %></CustomerID>
+                            <%= c.<CompanyName> %>
+                            <%= c.<ContactName> %>
+                            <%= o.<EmployeeID> %>
+                            <%= o.<OrderDate> %>
+                        </Order> _
+                    %>
+                </Root>
+            Console.WriteLine(newCustOrd)
+        End If
+    End Sub
+End Class
+```
+
+The example produces this output:
 
 ```output
 Attempting to validate, custOrdDoc validated
