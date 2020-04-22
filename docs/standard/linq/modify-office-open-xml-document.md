@@ -15,9 +15,15 @@ For more information on Office Open XML, see [Open XML SDK](https://github.com/O
 
 ## Example
 
-This example finds the first paragraph element in the document. It retrieves the text from the paragraph, and deletes all text runs. It creates a new text run that consists of the first paragraph text that has been converted to upper case. It then serializes the changed XML into the Open XML package and closes it.
+This example finds the first paragraph element in the document. It retrieves the text from the paragraph, and deletes all text runs. It creates a new text run that consists of the text of the first paragraph converted to upper case. It then serializes the changed XML into the Open XML package and closes it.
 
-The example operates on Office Open XML document [Create the source Office Open XML document](create-source-office-open-xml-document.md). It uses classes found in the WindowsBase assembly, and types in the <xref:System.IO.Packaging?displayProperty=nameWithType> namespace.
+The example operates on Office Open XML document described in [Create the source Office Open XML document](create-source-office-open-xml-document.md).
+
+It makes use of the following:
+
+- The `StringConcatenate` extension method, defined as part of the example.
+- Classes found in the WindowsBase assembly.
+- Types in the <xref:System.IO.Packaging?displayProperty=nameWithType> namespace.
 
 ```csharp
 public static class LocalExtensions
@@ -255,10 +261,10 @@ Module Module1
 End Module
 ```
 
-If you open `SampleDoc.docx` after running this program, you can see that this program converted the first paragraph in the document to upper case.
-
-When run with the sample Open XML document described in [Creating the Source Office Open XML Document (C#)](./creating-the-source-office-open-xml-document.md), The example produces this output:
+The example produces this output:
 
 ```output
 New first paragraph: >PARSING WORDPROCESSINGML WITH LINQ TO XML<
 ```
+
+If you open `SampleDoc.docx` after running this program, you can see that this program converted the first paragraph in the document to upper case.

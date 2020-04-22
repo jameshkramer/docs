@@ -7,6 +7,7 @@ dev_langs:
   - "vb"
 ms.assetid: cc2687cf-d648-451e-88ac-3847c6c967c8
 ---
+
 # How to retrieve paragraphs from an Office Open XML document (LINQ to XML)
 
 This article provides an example that opens an Office Open XML document and retrieves a collection of all of the paragraphs in the document.
@@ -15,16 +16,15 @@ For more information on Office Open XML, see [Open XML SDK](https://github.com/O
 
 ## Example: Retrieve the paragraphs from an Office Open XML document
 
-This example opens an Office Open XML package, and uses the relationships within the package to find the document and the style parts. It then queries the document and projects a collection that has the paragraph information. Each object of the collection represents a paragraph, and contains the paragraph <xref:System.Xml.Linq.XElement> node, style name, and text.
+The example opens an Office Open XML package, and uses the relationships within the package to find the document and the style parts. It then queries the document and projects a collection that has the paragraph information. Each object of the collection represents a paragraph, and contains the paragraph <xref:System.Xml.Linq.XElement> node, the style name, and the text.
 
-The example operates on Office Open XML document [Create the source Office Open XML document](create-source-office-open-xml-document.md), and makes use of the following:
+The example operates on the Office Open XML document described in [Create the source Office Open XML document](create-source-office-open-xml-document.md).
+
+It makes use of the following:
 
 - The `StringConcatenate` extension method, defined as part of the example.
 - Classes found in the WindowsBase assembly.
 - Types in the <xref:System.IO.Packaging?displayProperty=nameWithType> namespace.
-
-For a detailed tutorial that explains how this example works, see [Introduction to pure functional transformations](introduction-pure-functional-transformations.md).
-
 
 ```csharp
 public static class LocalExtensions
@@ -165,6 +165,9 @@ class Program
     }
 }
 ```
+
+```vb  
+Imports <xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">  
 
 Module Module1
     <System.Runtime.CompilerServices.Extension()> _
