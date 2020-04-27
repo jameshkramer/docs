@@ -16,8 +16,8 @@ Sometimes you want to write LINQ to XML queries with complex filters. For exampl
 
 This example shows how to find all `PurchaseOrder` elements that have:
 
-- a child `Address` element whose `Type` attribute equals "Shipping", and
-- a child `State` element that equals "NY".
+- A child `Address` element whose `Type` attribute equals "Shipping".
+- A child `State` element that equals "NY".
 
 It uses a nested query in the `Where` clause, and the `Any` operator returns `true` if the collection has any elements in it. The example uses XML document [Sample XML file: Multiple purchase orders](sample-xml-file-multiple-purchase-orders.md).
 
@@ -120,8 +120,8 @@ The example produces this output:
 - <xref:System.Xml.Linq.XContainer.Elements%2A>
 - [Projection Operations (C#)](../../csharp/programming-guide/concepts/linq/projection-operations.md)
 - [Quantifier Operations (C#)](../../csharp/programming-guide/concepts/linq/quantifier-operations.md)
-- [XML Child Axis Property](../../visual-basic/language-reference/xml-axis/xml-child-axis-property.md)
-- [XML Attribute Axis Property](../../visual-basic/language-reference/xml-axis/xml-attribute-axis-property.md)
-- [XML Value Property](../../visual-basic/language-reference/xml-axis/xml-value-property.md)
+- [XML Child Axis Property (Visual Basic)](../../visual-basic/language-reference/xml-axis/xml-child-axis-property.md)
+- [XML Attribute Axis Property (Visual Basic)](../../visual-basic/language-reference/xml-axis/xml-attribute-axis-property.md)
+- [XML Value Property (Visual Basic)](../../visual-basic/language-reference/xml-axis/xml-value-property.md)
 - [Projection Operations (Visual Basic)](../../visual-basic/programming-guide/concepts/linq/projection-operations.md)
 - [Quantifier Operations (Visual Basic)](../../visual-basic/programming-guide/concepts/linq/quantifier-operations.md)

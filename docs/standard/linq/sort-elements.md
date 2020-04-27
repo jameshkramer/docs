@@ -1,6 +1,6 @@
 ---
 title: How to sort elements - LINQ to XML
-description: Wite a query that sorts its results
+description: Write a query that sorts its results.
 ms.date: 07/20/2015
 dev_langs:
   - "csharp"
@@ -9,6 +9,8 @@ ms.assetid: aee6fbbc-81fd-4b3e-b40f-6ed7b3bd3fee
 ---
 
 # How to sort elements (LINQ to XML)
+
+You can sort your results when you query XML. This article provides two examples: the first sorts results for XML that *isn't* in a namespace, and the second does the same sort, but for XML that *is* in a namespace.
 
 ## Example: Write a query that sorts its results
 
@@ -100,5 +102,5 @@ The example produces this output:
 ## See also
 
 - [Sorting Data (C#)](../../csharp/programming-guide/concepts/linq/sorting-data.md)
-- [Sorting Data](../../visual-basic/programming-guide/concepts/linq/sorting-data.md)
+- [Sorting Data (Visual Basic)](../../visual-basic/programming-guide/concepts/linq/sorting-data.md)
 - [Basic Queries (LINQ to XML) (Visual Basic)](../../visual-basic/programming-guide/concepts/linq/basic-queries-linq-to-xml.md)
