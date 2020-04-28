@@ -49,7 +49,7 @@ For Each el As XElement In list
 Next
 ```
 
-The example produces this output:
+This example produces the following output:
 
 ```xml
 <Child2>4</Child2>

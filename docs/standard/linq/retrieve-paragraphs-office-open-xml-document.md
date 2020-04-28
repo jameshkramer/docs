@@ -295,7 +295,7 @@ Module Module1
 End Module
 ```
 
-The example produces this output:
+This example produces the following output:
 
 ```output
 StyleName:Heading1 >Parsing WordprocessingML with LINQ to XML<
@@ -310,7 +310,7 @@ StyleName:Code >        Console.WriteLine("Hello World");<
 StyleName:Code >    }<
 StyleName:Code >}<
 StyleName:Normal ><
-StyleName:Normal >The example produces this output:<
+StyleName:Normal >This example produces the following output:<
 StyleName:Normal ><
 StyleName:Code >Hello World<
 ```

@@ -186,7 +186,7 @@ Public Class StreamChildEnumerator
 End Class
 ```
 
-The example produces this output:
+This example produces the following output:
 
 ```output
 bbb
