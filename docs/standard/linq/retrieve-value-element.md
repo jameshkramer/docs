@@ -19,7 +19,7 @@ With C#, casting is generally the better approach. If you cast the element or at
 
 With Visual Basic, the better approach is to use the <xref:System.Xml.Linq.XElement.Value%2A?displayProperty=nameWithType> property.
 
-## String cast example  
+## String cast example
 
 To retrieve the value of an element, cast the <xref:System.Xml.Linq.XElement> object to your desired type. You can cast an element to a string, as follows:
 
@@ -42,9 +42,9 @@ This example produces the following output:
 Value of e:abcde
 ```
 
-## Integer cast example  
+## Integer cast example
 
-You can also cast elements to types other than string. For example, if you have an element that contains an integer, you can cast it to `int`, as shown in the following code:  
+You can also cast elements to types other than string. For example, if you have an element that contains an integer, you can cast it to `int`, as shown in the following code:
 
 ```csharp
 XElement e = new XElement("Age", "44");
