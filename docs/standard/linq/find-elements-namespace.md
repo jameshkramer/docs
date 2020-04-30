@@ -1,24 +1,22 @@
 ---
 title: How to find elements in a namespace - LINQ to XML
-description: Learn how to use an XPath expressionexit
- to find nodes in a particular namespace.
+description: Learn how to find elements in a particular namespace by using namespace prefixes in XPath expressions.
 ms.date: 07/20/2015
 dev_langs:
   - "csharp"
   - "vb"
-ms.assetid: cae1c4ac-6cd5-46cf-9b1c-bd85bc9b7ea9
+ms.assetid: cae1c4ac-6cd5-46cf-9b1c-bd85bc9b7ea9m
 ---
 
 # How to find elements in a namespace (LINQ to XML)
 
-XPath expressions can find nodes in a particular namespace. XPath expressions use namespace prefixes for specifying namespaces. To parse an XPath expression that contains namespace prefixes, you must pass an object to the XPath methods that implements <xref:System.Xml.IXmlNamespaceResolver>. This example uses <xref:System.Xml.XmlNamespaceManager>.
+Use namespace prefixes in XPath expressions to find nodes in a particular namespace. To parse an XPath expression that contains namespace prefixes, you pass an object to the XPath methods that implement <xref:System.Xml.IXmlNamespaceResolver>.
 
-## Example
+## Example: Find purchase orders from a specific namespace in a document that has two namespaces
 
-The following example reads an XML tree that contains two namespaces. It uses an <xref:System.Xml.XmlReader> to read XML document [Sample XML file: Consolidated purchase orders](sample-xml-file-consolidated-purchase-orders). This document has purchase orders in two namespaces: the default namespace, and the namespace with prefix `aw`. It then gets an <xref:System.Xml.XmlNameTable> from the <xref:System.Xml.XmlReader>, and an <xref:System.Xml.XmlNamespaceManager> from the <xref:System.Xml.XmlNameTable>. It uses the <xref:System.Xml.XmlNamespaceManager> when selecting elements.
+The following example uses an <xref:System.Xml.XmlReader> to read XML document [Sample XML file: Consolidated purchase orders](sample-xml-file-consolidated-purchase-orders), which has purchase orders in two namespaces. It then gets an <xref:System.Xml.XmlNameTable> from the <xref:System.Xml.XmlReader>, and an <xref:System.Xml.XmlNamespaceManager> from the <xref:System.Xml.XmlNameTable>. It uses the <xref:System.Xml.XmlNamespaceManager> when selecting elements.
 
 The XPath expression is: `./aw:*`
-
 
 ```csharp
 XmlReader reader = XmlReader.Create("ConsolidatedPurchaseOrders.xml");
@@ -65,6 +63,7 @@ For Each el As XElement In list2
     Console.WriteLine(el)
 Next
 ```
+
 This example produces the following output:
 
 ```output

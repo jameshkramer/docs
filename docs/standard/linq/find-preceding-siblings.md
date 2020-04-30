@@ -1,6 +1,6 @@
 ---
 title: How to find preceding siblings - LINQ to XML
-description: Learn how to use XPathSelectElements along the preceding-sibling axis to find elements that precede a given element, and how to use XNode.ElementsBeforeSelf to find the same elements.
+description: "Learn how to to find sibling elements that precede a given element. Two methods are shown: one uses XPathSelectElements along the preceding-sibling axis, the other uses XNode.ElementsBeforeSelf."
 ms.date: 07/20/2015
 dev_langs:
   - "csharp"
@@ -10,13 +10,16 @@ ms.assetid: b281ff99-d08a-43d0-bea1-eff831b2f8ae
 
 # How to find preceding siblings (LINQ to XML)
 
-This article shows how to use XPathSelectElements along the preceding-sibling axis to find elements that precede a given element, and how to use XNode.ElementsBeforeSelf to find the same elements.
+This article shows how to use <xref:System.Xml.XPath.Extensions.XPathSelectElements%2A> along the preceding-sibling axis to find sibling elements that precede a given element, and how to use <xref:System.Xml.Linq.XNode.ElementsBeforeSelf%2A?displayProperty=nameWithType> to find the same elements.
 
-Note that the results of both <xref:System.Xml.XPath.Extensions.XPathSelectElements%2A> and <xref:System.Xml.Linq.XNode.ElementsBeforeSelf%2A?displayProperty=nameWithType> are in document order.
+## Example: Use two methods to find sibling elements that precede an element
 
-## Example: Use the `preceding-sibling` axis to find sibling elements that precede an element
+The following example finds the `FullAddress` element in XML document [Sample XML file: Customers and orders](sample-xml-file-customers-orders), and retrieves the preceding sibling elements in two different ways. It then compares the results and finds them identical.
 
-The following example finds the `FullAddress` element in XML document [Sample XML file: Customers and orders](sample-xml-file-customers-orders), and then retrieves the previous elements in two different ways. It then compares the results and finds them identical. The XPath expression used in XPathSelectElements is `preceding-sibling::*`.
+> [!NOTE]
+> Both methods provide results that are in document order.
+
+The XPath expression used is `preceding-sibling::*`.
 
 ```csharp
 XElement co = XElement.Load("CustomersOrders.xml");
