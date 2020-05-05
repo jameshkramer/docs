@@ -1,6 +1,6 @@
 ---
 title: How to find attributes of siblings with a specific name - LINQ to XML
-description:
+description: "Learn how to find every attribute that has a specific name and that also belongs to a sibling of the context node. Two methods are shown: one uses XPathEvaluate, the other uses LINQ to XML query."
 ms.date: 07/20/2015
 dev_langs:
   - "csharp"
@@ -10,19 +10,13 @@ ms.assetid: c3133d64-523f-422d-8838-73d36b945ca0
 
 # How to find attributes of siblings with a specific name (LINQ to XML)
 
-This article shows how to use <xref:System.Xml.XPath.Extensions.XPathSelectElements%2A> to find the union of the results of two XPath location paths, and how to use the <xref:System.Linq.Enumerable.Concat%2A> standard query operator to do the same thing.
+This article shows how to use <xref:System.Xml.XPath.Extensions.XPathEvaluate%2A> to find every attribute that has a specific name and that also belongs to a sibling of the context node. The article also shows how to use LINQ to XML query to do the same thing.
 
+## Example: Find all sibling elements named `Book`, and then find all attributes named `id`
 
-This topic shows how to find all attributes of the siblings of the context node. Only attributes with a specific name are returned in the collection.
+This example finds a `Book` element in XML document [Sample XML file: Books](sample-xml-file-books.md). It then finds all sibling elements named `Book`, and all attributes named `id` of those elements. The result is a collection of attributes.
 
- The XPath expression is:
-
- `../Book/@id`
-
-## Example
- This example first finds a `Book` element, and then finds all sibling elements named `Book`, and then finds all attributes named `id`. The result is a collection of attributes.
-
- This example uses the following XML document: [Sample XML File: Books (LINQ to XML)](./sample-xml-file-books-linq-to-xml.md).
+The XPath expression is `../Book/@id`.
 
 ```csharp
 XDocument books = XDocument.Load("Books.xml");
@@ -85,4 +79,4 @@ id="bk102"
 
 ## See also
 
-- [LINQ to XML for XPath Users (Visual Basic)](../../../../visual-basic/programming-guide/concepts/linq/linq-to-xml-for-xpath-users.md)
+- [LINQ to XML for XPath Users (Visual Basic)](../../visual-basic/programming-guide/concepts/linq/linq-to-xml-for-xpath-users.md)

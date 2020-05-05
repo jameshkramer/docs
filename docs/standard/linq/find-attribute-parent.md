@@ -1,6 +1,6 @@
 ---
 title: How to find an attribute of the parent - LINQ to XML
-description:
+description: "Learn how to navigate to an element and find an attribute of its parent. Two methods are shown: one uses XPathEvaluate, the other uses LINQ to XML query."
 ms.date: 07/20/2015
 dev_langs:
   - "csharp"
@@ -10,20 +10,13 @@ ms.assetid: dbef9d89-a5c4-431f-80cc-7a2ebf323f86
 
 # How to find an attribute of the parent (LINQ to XML)
 
-This article shows how to use <xref:System.Xml.XPath.Extensions.XPathSelectElements%2A> to find the union of the results of two XPath location paths, and how to use the <xref:System.Linq.Enumerable.Concat%2A> standard query operator to do the same thing.
+This article shows how to use <xref:System.Xml.XPath.Extensions.XPathEvaluate%2A> to find an attribute of a parent element, and how to use LINQ to XML query to do the same thing.
 
+## Example: Find the `Author` element, and then find the `id` attribute of its parent
 
-This topic shows how to navigate to the parent element and find an attribute of it.
+This example first finds an `Author` element in XML document [Sample XML file: Books](sample-xml-file-books.md), and then finds the `id` attribute of its parent element.
 
-The XPath expression is:
-
-`../@id`
-
-## Example
-
-This example first finds an `Author` element. It then finds the `id` attribute of the parent element.
-
-This example uses the following XML document: [Sample XML File: Books (LINQ to XML)](./sample-xml-file-books-linq-to-xml.md).
+The XPath expression is `../@id`
 
 ```csharp
 XDocument books = XDocument.Load("Books.xml");
