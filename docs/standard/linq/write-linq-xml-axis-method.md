@@ -1,6 +1,6 @@
 ---
 title: How to write a LINQ to XML axis method - LINQ to XML
-description: You can write your own axis methods to retrieve collections from an XML tree, methods that meet the needs of your applications. Writing extension methods is one of the best ways to do this. The article provides an example for C# and Visual Basic.
+description: Learn how to write your own axis methods to retrieve collections from an XML tree in C# or Visual Basic.
 ms.date: 07/20/2015
 dev_langs:
   - "csharp"
@@ -68,7 +68,7 @@ public static class MyExtensions
             XElement el = xobj as XElement;
             if (el != null)
                 return "/" + NameWithPredicate(el);
-            // the XPath data model doesn't include white space text nodes
+            // The XPath data model doesn't include white space text nodes
             // that are children of a document, so this method returns null.
             XText xt = xobj as XText;
             if (xt != null)
@@ -349,7 +349,7 @@ Public Module MyExtensions
             Dim el = TryCast(xobj, XElement)
             If el IsNot Nothing Then Return "/" + NameWithPredicate(el)
 
-            ' the XPath data model doesn't include white space text nodes
+            ' The XPath data model doesn't include white space text nodes
             ' that are children of a document, so this method returns null.
 
             Dim xt = TryCast(xobj, XText)
