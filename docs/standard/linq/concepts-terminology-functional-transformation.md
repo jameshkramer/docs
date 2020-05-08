@@ -1,18 +1,19 @@
 ---
 title: Concepts and terminology (functional transformation) - LINQ to XML
+description: Learn the concepts and terminology of pure functional transformations.
 ms.date: 07/20/2015
 ms.assetid: 03defb3a-7e17-4ab1-8efa-4dd66621e860
 ---
 
 # Concepts and terminology (functional transformation) (LINQ to XML)
 
-This topic introduces the concepts and terminology of pure functional transformations. The functional transformation approach to transforming data yields code that is often quicker to program, more expressive, and easier to debug and maintain than more traditional, imperative programming.
+This article introduces the concepts and terminology of pure functional transformations. The functional transformation approach to transforming data yields code that's often quicker to program, more expressive, and easier to debug and maintain than more traditional, imperative programming.
 
-Note that the topics in this section are not intended to fully explain functional programming. Instead, these topics identify some of the functional programming capabilities that make it easier to transform XML from one shape to another.
+Note that the articles in this section aren't intended to fully explain functional programming. Instead, these articles identify some of the functional programming capabilities that make it easier to transform XML from one shape to another.
 
 ## What is pure functional transformation
 
-In *pure functional transformation*, a set of functions, called *pure functions*, define how to transform a set of structured data from its original form into another form. The word "pure" indicates that the functions are *composable*, which requires that they are:
+In *pure functional transformation*, a set of functions, called *pure functions*, define how to transform a set of structured data from its original form into another form. The word "pure" indicates that the functions are *composable*, which requires that they're:
 
 - *Self-contained*, so that they can be freely ordered and rearranged without entanglement or interdependencies with the rest of the program. Pure transformations have no knowledge of or effect upon their environment. That is, the functions used in the transformation have no *side effects*.
 - *Stateless*, so that executing the same function or specific set of functions on the same input will always result in the same output. Pure transformations have no memory of their prior use.
@@ -24,7 +25,7 @@ In *pure functional transformation*, a set of functions, called *pure functions*
 >
 > You should not confuse pure functions with pure virtual methods in C++. The latter indicates that the containing class is abstract and that no method body is supplied.
 
-### Functional Programming
+### Functional programming
 
 *Functional programming* is a programming approach that directly supports pure functional transformation.
 
@@ -32,7 +33,7 @@ Historically, general-purpose functional programming languages, such as ML, Sche
 
 For more information about functional programming, see [Functional programming vs. imperative programming](functional-programming-vs-imperative-programming.md).
 
-#### Domain-Specific FP Languages
+#### Domain-specific FP languages
 
 Although general functional programming languages have not been widely adopted, some domain-specific functional programming languages have had better success. For example, Cascading Style Sheets (CSS) are used to determine the look and feel of many Web pages, and Extensible Stylesheet Language Transformations (XSLT) style sheets are used extensively in XML data manipulation. For more information about XSLT, see [XSLT Transformations](../../standard/data/xml/xslt-transformations.md).
 
@@ -46,7 +47,7 @@ A function that can be treated as a programmatic object. For example, a higher-o
 For more information, see [Standard Query Operators Overview (C#)](../../csharp/programming-guide/concepts/linq/standard-query-operators-overview.md) and [Standard Query Operators Overview (Visual Basic)](../../visual-basic/programming-guide/concepts/linq/standard-query-operators-overview.md).
 
 lambda expression \
-Essentially, an inline anonymous function that can be used wherever a delegate type is expected. This is a simplified definition of lambda expressions, but it is adequate for the purposes of this tutorial.
+Essentially, an inline anonymous function that can be used wherever a delegate type is expected. This is a simplified definition of lambda expressions, but it's adequate for the purposes of this tutorial.
 
 For more information, see [Lambda expressions (C# Programming Guide)](../../csharp/programming-guide/statements-expressions-operators/lambda-expressions.md) and [Lambda Expressions (Visual Basic))](../../visual-basic/programming-guide/language-features/procedures/lambda-expressions.md).
 
