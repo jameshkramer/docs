@@ -12,9 +12,9 @@ This section introduces functional transformations, including the underlying con
 
  A working knowledge of basic computer science concepts and XML, including XML namespaces, is also assumed.
 
-## In This Section
+## In this section
 
-|Topic|Description|
+|Article|Description|
 |-----------|-----------------|
 |[Concepts and terminology (functional transformation)](concepts-terminology-functional-transformation.md)|Introduces the concepts and terminology of pure functional transformations.|
 |[Functional programming vs. imperative programming](functional-programming-vs-imperative-programming.md)|Compares and contrasts functional programming to more traditional imperative (procedural) programming.|

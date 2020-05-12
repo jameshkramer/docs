@@ -226,10 +226,8 @@
             href: applicability-functional-transformation.md
           - name: Functional transformation of XML
             href: functional-transformation-xml.md
-          - name: "Tutorial: Deferred execution in Visual Basic"
-            href: deferred-execution.md
-          - name: Deferred execution and lazy evaluation in LINQ to XML
-            href: deferred-execution-lazy-evaluation-linq-xml.md
+          - name: Deferred execution and lazy evaluationML
+            href: deferred-execution-lazy-evaluation.md
           - name: Deferred execution example
             href: deferred-execution-example.md
           - name: "Tutorial: Chain queries together in C#"
