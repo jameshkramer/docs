@@ -12,7 +12,7 @@ ms.assetid: 50f4fbac-81fe-4f26-aedf-506e21419b19
 
 This article shows how deferred execution and lazy evaluation affect the execution of your LINQ to XML queries.
 
-## Example
+## Example: Use the `yield return` construct in an extension method to defer execution
 
 The following example shows the order of execution when using an extension method that uses deferred execution. The example declares an array of three strings. It then iterates through the collection returned by `ConvertCollectionToUpperCase`.
 
@@ -85,15 +85,11 @@ ToUpper: source ghi
 Main: str GHI
 ```
 
- Notice that when iterating through the collection returned by `ConvertCollectionToUpperCase`, each item is retrieved from the source string array and converted to uppercase before the next item is retrieved from the source string array.
+Notice that when iterating through the collection returned by `ConvertCollectionToUpperCase`, each item is retrieved from the source string array and converted to uppercase before the next item is retrieved from the source string array.
 
- You can see that the entire array of strings is not converted to uppercase before each item in the returned collection is processed in the `foreach` loop in `Main`.
-
- The next article in this tutorial illustrates chaining queries together:
-
-- [Chaining Queries Example (C#)](chaining-queries-example.md)
+You can see that the entire array of strings isn't converted to uppercase before each item in the returned collection is processed in the `foreach` loop in `Main`.
 
 ## See also
 
-- [Tutorial: Chain queries together (C#)](chain-queries-example.md)
-- [Tutorial: Deferred execution and lazy evaluation](deferred-execution-lazy-evaluation.md)
+- [Deferred execution and lazy evaluation](deferred-execution-lazy-evaluation.md)
+- [Tutorial: Chain queries together in C#](chain-queries-example.md)

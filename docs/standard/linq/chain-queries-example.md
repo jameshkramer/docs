@@ -1,15 +1,17 @@
 ---
-title: Chain Queries Example (C#) - LINQ to XML
+title: Chain queries example (C#) - LINQ to XML
 description: Learn what happens when you chain together two queries that both use deferred execution and lazy evaluation.
 ms.date: 07/20/2015
 ms.assetid: abbca162-d95e-43af-b92c-e46e6aa2540e
 ---
-# Chaining Queries Example (C#)
 
-This example builds on the previous example and shows what happens when you chain together two queries that both use deferred execution and lazy evaluation.
+# Chain queries example (C#) (LINQ to XML)
 
-## Example
- In this example, another extension method is introduced, `AppendString`, which appends a specified string onto every string in the source collection, and then yields the new strings.
+This example builds on the example in [Deferred execution example](deferred-execution-example.md) and shows what happens when you chain together two queries that both use deferred execution and lazy evaluation.
+
+## Example: Add a second extension method that uses `yield return` to defer execution
+
+In this example, another extension method is introduced, `AppendString`, which appends a specified string onto every string in the source collection, and then yields the changed string.
 
 ```csharp
 public static class LocalExtensions
@@ -74,14 +76,10 @@ AppendString: source >GHI<
 Main: str >GHI!!!<
 ```
 
- In this example, you can see that each extension method operates one at a time for each item in the source collection.
+In this example, you can see that each extension method operates one at a time for each item in the source collection.
 
- What should be clear from this example is that even though we have chained together queries that yield collections, no intermediate collections are materialized. Instead, each item is passed from one lazy method to the next. This results in a much smaller memory footprint than an approach that would first take one array of strings, then create a second array of strings that have been converted to uppercase, and finally create a third array of strings where each string has the exclamation points appended to it.
+What should be clear from this example is that even though we have chained together queries that yield collections, no intermediate collections are materialized. Instead, each item is passed from one lazy method to the next. This results in a much smaller memory footprint than an approach that would first take one array of strings, then create a second array of strings that have been converted to uppercase, and finally create a third array of strings where each string has the exclamation points appended to it.
 
- The next article in this tutorial illustrates intermediate materialization:
+The next article in this tutorial illustrates intermediate materialization:
 
-- [Intermediate Materialization (C#)](./intermediate-materialization.md)
-
-## See also
-
-- [Tutorial: Chaining Queries Together (C#)](./deferred-execution-and-lazy-evaluation-in-linq-to-xml.md)
+- [Intermediate materialization (C#)](intermediate-materialization.md)
