@@ -83,3 +83,7 @@ In this example, you can see that the call to <xref:System.Linq.Enumerable.ToLis
 Standard query operators can also be chained together as shown in the final article in this tutorial:
 
 - [Chain standard query operators together (C#)](chain-standard-query-operators-together.md)
+
+## See also
+
+- [Deferred execution and lazy evaluation](deferred-execution-lazy-evaluation.md)

@@ -92,4 +92,4 @@ You can see that the entire array of strings isn't converted to uppercase before
 ## See also
 
 - [Deferred execution and lazy evaluation](deferred-execution-lazy-evaluation.md)
-- [Tutorial: Chain queries together in C#](chain-queries-example.md)
+- [Tutorial: Chain queries together (C#)](chain-queries-example.md)
