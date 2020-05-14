@@ -1,5 +1,5 @@
 ---
-title: "Shape of WordprocessingML documents (C#) - LINQ to XML
+title: The XML shape of WordprocessingML documents - LINQ to XML
 description: Learn about the XML shape of a WordprocessingML document.
 ms.date: 07/20/2015
 dev_langs:
@@ -8,19 +8,19 @@ dev_langs:
 ms.assetid: 3791b5e0-c502-469b-bb75-a7bf6fdd0a94
 ---
 
-# Shape of WordprocessingML documents (C#) (LINQ to XML)
+# The XML shape of WordprocessingML documents (LINQ to XML)
 
 This article introduces the XML shape of a WordprocessingML document.
 
 ## Microsoft Office formats
 
-The native file format for the 2007 Microsoft Office system is Office Open XML (commonly called Open XML). Open XML is an XML-based format that an Ecma standard and is currently going through the ISO-IEC standards process. The markup language for word processing files within Open XML is called WordprocessingML. This tutorial uses WordprocessingML source files as input for the examples.
+The native file format for the 2007 Microsoft Office system is Office Open XML (commonly called Open XML). Open XML is an XML-based format that is an Ecma standard and is currently going through the ISO-IEC standards process. The markup language for word processing files within Open XML is called WordprocessingML. This tutorial uses WordprocessingML source files as input for the examples.
 
 If you are using Microsoft Office 2003, you can save documents in the Office Open XML format if you have installed the Microsoft Office Compatibility Pack for Word, Excel, and PowerPoint 2007 File Formats.
 
 ## The shape of WordprocessingML documents
 
-The first thing to understand is the shape of WordprocessingML documents. A WordprocessingML document contains a body element (named `w:body`) that contains the paragraphs of the document. Each paragraph contains one or more text runs (named `w:r`). Each text run contains one or more text pieces (named `w:t`).
+The first thing to understand is the XML shape of WordprocessingML documents. A WordprocessingML document contains a body element (named `w:body`) that contains the paragraphs of the document. Each paragraph contains one or more text runs (named `w:r`). Each text run contains one or more text pieces (named `w:t`).
 
 The following is a very simple WordprocessingML document:
 
@@ -119,7 +119,7 @@ Module Module1
 End Module
 ```
 
- ## External resources
+## See also
 
 - [Introducing the Office (2007) Open XML File Formats](https://docs.microsoft.com/previous-versions/office/developer/office-2007/aa338205%28v=office.12%29)
 - [Overview of WordprocessingML](https://docs.microsoft.com/previous-versions/office/developer/office-2003/aa212812%28v=office.11%29)

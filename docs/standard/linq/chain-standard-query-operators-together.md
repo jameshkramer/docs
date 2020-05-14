@@ -1,6 +1,6 @@
 ---
 title: Chain standard query operators together (C#) - LINQ to XML
-description: Learn how to chain query operators chain together.
+description: Learn how to chain query operators together.
 ms.date: 07/20/2015
 dev_langs:
   - "csharp"
@@ -9,15 +9,15 @@ ms.assetid: 66f2b0a9-2c23-4735-988e-bbc9dfb55c7b
 
 # Chain standard query operators together (C#) (LINQ to XML)
 
-The standard query operators can be chained together. For example, you can interject the <xref:System.Linq.Enumerable.Where%2A?displayProperty=nameWithType> operator, and it operates in a lazy fashion; that is, no intermediate results are materialized by it.
+The standard query operators can be chained together. For example, you can interject the <xref:System.Linq.Enumerable.Where%2A?displayProperty=nameWithType> operator (invoked by the `where` clause), and it operates in a lazy fashion; that is, no intermediate results are materialized by it.
 
-## Example: Interject a where clause before calling `ConvertCollectionToUpperCase`
+## Example: Interject a where clause
 
 In this example, the <xref:System.Linq.Enumerable.Where%2A> method is called before calling `ConvertCollectionToUpperCase`. The <xref:System.Linq.Enumerable.Where%2A> method operates in almost exactly the same way as the lazy methods used in previous examples in this tutorial, `ConvertCollectionToUpperCase` and `AppendString`.
 
-One difference is that in this case, the <xref:System.Linq.Enumerable.Where%2A> method iterates through its source collection, determines that the first item does not pass the predicate, and then gets the next item, which does pass. It then yields the second item.
+One difference is that in this case, the <xref:System.Linq.Enumerable.Where%2A> method iterates through its source collection, determines that the first item doesn't pass the predicate, and then gets the next item, which does pass. It then yields the second item.
 
-However, the basic idea is the same: intermediate collections are not materialized unless they have to be.
+However, the basic idea is the same: intermediate collections aren't materialized unless they have to be.
 
 When query expressions are used, they are converted to calls to the standard query operators, and the same principles apply.
 

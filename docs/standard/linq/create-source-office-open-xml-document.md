@@ -1,6 +1,6 @@
 ---
-title: "Creating the source Office Open XML Document (C#) - LINQ to XML
-description:
+title: Create the source Office Open XML document - LINQ to XML
+description: Learn how to create the Office Open XML WordprocessingML document used by the other examples in this tutorial.
 ms.date: 07/20/2015
 dev_langs:
   - "csharp"
@@ -8,21 +8,21 @@ dev_langs:
 ms.assetid: 653c8cdb-73be-4dc2-927f-924cfb4ed9ed
 ---
 
-# Creating the Source Office Open XML Document (C#) (LINQ to XML)
+# Create the source Office Open XML document (LINQ to XML)
 
-This article shows how to create the Office Open XML WordprocessingML document that the other examples in this tutorial use. If you follow these instructions, your output will match the output provided in each example.
+This article shows how to create the Office Open XML WordprocessingML document used by the other examples in this tutorial. If you follow these instructions, your output will match the output provided in each example.
 
 However, the examples in this tutorial will work with any valid WordprocessingML document.
 
 To create the document that this tutorial uses, you must either have Microsoft Office 2007 or later installed, or you must have Microsoft Office 2003 with the Microsoft Office Compatibility Pack for Word, Excel, and PowerPoint 2007 File Formats.
 
-## Creating the WordprocessingML Document
+## Create the WordprocessingML document
 
-#### To create the WordprocessingML document
+Use the following steps to create the WordprocessingML document:
 
 1. Create a new Microsoft Word document.
 1. Paste the following text into the new document.
-   1. For C# use this text:
+   1. For C#, use this text:
 
          ```text
          Parsing WordprocessingML with LINQ to XML
@@ -42,7 +42,7 @@ To create the document that this tutorial uses, you must either have Microsoft O
          Hello World
          ```
 
-   1. For Visual Basic, use this text.
+   1. For Visual Basic, use this text:
 
       ```text
       Parsing WordprocessingML with LINQ to XML
@@ -73,4 +73,4 @@ To create the document that this tutorial uses, you must either have Microsoft O
 
 ## See also
 
-- [Tutorial: Manipulate content in a WordprocessingML document](shape-wordprocessingml-documents.md)
+- [Tutorial: Manipulate content in a WordprocessingML document](xml-shape-wordprocessingml-documents.md)
