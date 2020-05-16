@@ -1,6 +1,10 @@
 ---
 title: Refactor using a pure function - LINQ to XML
+description:
 ms.date: 07/20/2015
+dev_langs:
+  - "csharp"
+  - "vb"
 ms.assetid: a3416a45-9e12-4e4a-9747-897f06eef510
 ---
 # Refactoring Using a Pure Function (C#)
