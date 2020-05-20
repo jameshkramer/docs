@@ -1,32 +1,32 @@
 ---
 title: Retrieve the text of the paragraphs - LINQ to XML
-description:
+description: Learn how to retrieve the text as a string from paragraph nodes from a WordprocessingML document.
 ms.date: 07/20/2015
 dev_langs:
   - "csharp"
   - "vb"
 ms.assetid: 127d635e-e559-408f-90c8-2bb621ca50ac
 ---
-# Retrieving the Text of the Paragraphs (C#)
-This example builds on the previous example, [Retrieving the Paragraphs and Their Styles (C#)](./retrieving-the-paragraphs-and-their-styles.md). This new example retrieves the text of each paragraph as a string.
-This example builds on the previous example, [Retrieving the Paragraphs and Their Styles (Visual Basic)](../../../../visual-basic/programming-guide/concepts/linq/retrieving-the-paragraphs-and-their-styles.md). This new example retrieves the text of each paragraph as a string.
 
- To retrieve the text, this example adds an additional query that iterates through the collection of anonymous types and projects a new collection of an anonymous type with the addition of a new member, `Text`. It uses the <xref:System.Linq.Enumerable.Aggregate%2A> standard query operator to concatenate multiple strings into one string.
+# Retrieve the text of the paragraphs (LINQ to XML)
 
- This technique (that is, first projecting to a collection of an anonymous type, then using this collection to project to a new collection of an anonymous type) is a common and useful idiom. This query could have been written without projecting to the first anonymous type. However, because of lazy evaluation, doing so does not use much additional processing power. The idiom creates more short lived objects on the heap, but this does not substantially degrade performance.
+This example builds on the previous example, [Retrieve the paragraphs and their styles](retrieve-paragraphs-styles.md). This new example retrieves the text of each paragraph as a string.
 
- Of course, it would be possible to write a single query that contains the functionality to retrieve the paragraphs, the style of each paragraph, and the text of each paragraph. However, it often is useful to break up a more complicated query into multiple queries because the resulting code is more modular and easier to maintain. Furthermore, if you need to reuse a portion of the query, it is easier to refactor if the queries are written in this manner.
+To retrieve the text, this example adds an additional query that iterates through the collection of anonymous types and projects a new collection of an anonymous type with the addition of a new member, `Text`. It uses the <xref:System.Linq.Enumerable.Aggregate%2A> standard query operator to concatenate multiple strings into one string.
 
- These queries, which are chained together, use the processing model that is examined in detail in the topic [Tutorial: Chaining Queries Together (C#)](deferred-execution-and-lazy-evaluation-in-linq-to-xml.md).
- These queries, which are chained together, use the processing model that is examined in detail in the topic [Tutorial: Deferred Execution (Visual Basic)](../../../../visual-basic/programming-guide/concepts/linq/tutorial-deferred-execution.md).
+This technique (that is, first projecting to a collection of an anonymous type, then using this collection to project to a new collection of an anonymous type) is a common and useful one. This query could have been written without projecting to the first anonymous type. However, because of lazy evaluation, doing so does not use much additional processing power. The technique does create more short-lived objects on the heap, but this does not substantially degrade performance.
 
-## Example
- This example processes a WordprocessingML document, determining the element node, the style name, and the text of each paragraph. This example builds on the previous examples in this tutorial. The new query is called out in comments in the code below.
+Of course, it would be possible to write a single query that contains the functionality to retrieve the paragraphs, the style of each paragraph, and the text of each paragraph. However, it often is useful to break up a more complicated query into multiple queries because the resulting code is more modular and easier to maintain. Further, if you need to reuse a portion of the query, it is easier to refactor if the queries are written in this manner.
 
- For instructions for creating the source document for this example, see [Creating the Source Office Open XML Document (C#)](./creating-the-source-office-open-xml-document.md).
- For instructions for creating the source document for this example, see [Creating the Source Office Open XML Document (Visual Basic)](../../../../visual-basic/programming-guide/concepts/linq/creating-the-source-office-open-xml-document.md).
+These queries, which are chained together, use the processing model that is examined in the article [Chain queries example](chain-queries-example.md).
 
- This example uses classes from the WindowsBase assembly. It uses types in the <xref:System.IO.Packaging?displayProperty=nameWithType> namespace.
+## Example: Determine the element not, style name, and text of each paragraph
+
+This example processes a WordprocessingML document, determining the element node, style name, and text of each paragraph. This example builds on the previous examples in this tutorial. The new query is called out in comments in the code below.
+
+For instructions for creating the source document for this example, see [Create the source Office Open XML document](create-source-office-open-xml-document.md).
+
+This example uses classes from the WindowsBase assembly. It uses types in the <xref:System.IO.Packaging?displayProperty=nameWithType> namespace.
 
 ```csharp
 const string fileName = "SampleDoc.docx";
@@ -207,10 +207,9 @@ Module Module1
 End Module
 ```
 
- This example produces the following output when applied to the document described in [Creating the Source Office Open XML Document (C#)](./creating-the-source-office-open-xml-document.md).
- This example produces the following output when applied to the document described in [Creating the Source Office Open XML Document (Visual Basic)](../../../../visual-basic/programming-guide/concepts/linq/creating-the-source-office-open-xml-document.md).
+The C# version of this example produces the following output:
 
-```output
+```conssole
 StyleName:Heading1 >Parsing WordprocessingML with LINQ to XML<
 StyleName:Normal ><
 StyleName:Normal >The following example prints to the console.<
@@ -228,7 +227,9 @@ StyleName:Normal ><
 StyleName:Code >Hello World<
 ```
 
-```console
+The Visual Basic version of this example produces the following output:
+
+```output
 StyleName:Heading1 >Parsing WordprocessingML with LINQ to XML<
 StyleName:Normal ><
 StyleName:Normal >The following example prints to the console.<
@@ -247,14 +248,12 @@ StyleName:Code >Hello World<
 ```
 
 ## Next Steps
- The next example shows how to use an extension method, instead of <xref:System.Linq.Enumerable.Aggregate%2A>, to concatenate multiple strings into a single string.
 
-- [Refactoring Using an Extension Method (C#)](./refactoring-using-an-extension-method.md)
-- [Refactoring Using an Extension Method (Visual Basic)](../../../../visual-basic/programming-guide/concepts/linq/refactoring-using-an-extension-method.md)
+The next article of the tutorial shows how to use an extension method, instead of <xref:System.Linq.Enumerable.Aggregate%2A>, to concatenate multiple strings into a single string:
+
+- [Refactor using an extension method](refactor-using-extension-method.md)
 
 ## See also
 
-- [Tutorial: Manipulating Content in a WordprocessingML Document (C#)](shape-of-wordprocessingml-documents.md)
-- [Deferred Execution and Lazy Evaluation in LINQ to XML (C#)](./deferred-execution-and-lazy-evaluation-in-linq-to-xml.md)
-- [Tutorial: Manipulating Content in a WordprocessingML Document (Visual Basic)](../../../../visual-basic/programming-guide/concepts/linq/tutorial-manipulating-content-in-a-wordprocessingml-document.md)
-- [Deferred Execution and Lazy Evaluation in LINQ to XML (Visual Basic)](../../../../visual-basic/programming-guide/concepts/linq/deferred-execution-and-lazy-evaluation-in-linq-to-xml.md)
+- [Tutorial: Manipulate content in a WordprocessingML document](xml-shape-wordprocessingml-documents.md)
+- [Deferred execution and lazy evaluation](deferred-execution-lazy-evaluation.md)

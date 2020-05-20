@@ -302,7 +302,7 @@ StyleName:Normal ><
 StyleName:Code >Hello World<
 ```
 
-```console
+```output
 StyleName:Heading1 >Parsing WordprocessingML with LINQ to XML<
 StyleName:Normal ><
 StyleName:Normal >The following example prints to the console.<

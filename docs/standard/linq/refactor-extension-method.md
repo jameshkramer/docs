@@ -1,27 +1,27 @@
 ---
 title: Refactor using an extension method - LINQ to XML
-description:
+description: Learn how to refactor the concatenation of strings using a pure function that is implemented as an extension method.
 ms.date: 07/20/2015
 dev_langs:
   - "csharp"
   - "vb"
 ms.assetid: c5fc123d-af10-4a2f-b8e4-db921efb2639
 ---
-# Refactoring Using an Extension Method (C#)
-This example builds on the previous example, [Retrieving the Text of the Paragraphs (C#)](./retrieving-the-text-of-the-paragraphs.md), by refactoring the concatenation of strings using a pure function that is implemented as an extension method.
-This example builds on the previous example, [Retrieving the Text of the Paragraphs (Visual Basic)](../../../../visual-basic/programming-guide/concepts/linq/retrieving-the-text-of-the-paragraphs.md), by refactoring the concatenation of strings using a pure function that is implemented as an extension method.
+# Refactor using an extension method (LINQ to XML)
 
- The previous example used the <xref:System.Linq.Enumerable.Aggregate%2A> standard query operator to concatenate multiple strings into one string. However, it is more convenient to write an extension method to do this, because the resulting query smaller and more simple.
+This example builds on the previous example, [Retrieve the text of the paragraphs](retrieve-text-paragraphs.md), by refactoring the concatenation of strings using a pure function that is implemented as an extension method.
 
-## Example
- This example processes a WordprocessingML document, retrieving the paragraphs, the style of each paragraph, and the text of each paragraph. This example builds on the previous examples in this tutorial.
+The previous example used the <xref:System.Linq.Enumerable.Aggregate%2A> standard query operator to concatenate multiple strings into one string. However, it is more convenient to write an extension method to do this, because the resulting query smaller and more simple.
 
- The example contains multiple overloads of the `StringConcatenate` method.
+## Example: Retrieve the paragraphs, their styles, and their text
 
- You can find instructions for creating the source document for this example in [Creating the Source Office Open XML Document (C#)](./creating-the-source-office-open-xml-document.md).
- You can find instructions for creating the source document for this example in [Creating the Source Office Open XML Document (Visual Basic)](../../../../visual-basic/programming-guide/concepts/linq/creating-the-source-office-open-xml-document.md).
+This example processes a WordprocessingML document, retrieving the paragraphs and, for each paragraph, the style and the text. This example builds on the previous examples in this tutorial.
 
- This example uses classes from the WindowsBase assembly. It uses types in the <xref:System.IO.Packaging?displayProperty=nameWithType> namespace.
+The example contains multiple overloads of the `StringConcatenate` method.
+
+You can find instructions for creating the source document for this example in [Create the source Office Open XML document](create-source-office-open-xml-document.md).
+
+This example uses classes from the WindowsBase assembly. It uses types in the <xref:System.IO.Packaging?displayProperty=nameWithType> namespace.
 
 ```csharp
 public static class LocalExtensions
@@ -102,10 +102,12 @@ ByVal func As Func(Of T, String), ByVal separator As String) As String
     Return sb.ToString()
 End Function
 ```
-## Example
- There are four overloads of the `StringConcatenate` method. One overload simply takes a collection of strings and returns a single string. Another overload can take a collection of any type, and a delegate that projects from a singleton of the collection to a string. There are two more overloads that allow you to specify a separator string.
 
- The following code uses all four overloads.
+## Example: Use all four overloads of the `StringConcatenate` method
+
+There are four overloads of the `StringConcatenate` method. One overload simply takes a collection of strings and returns a single string. Another overload can take a collection of any type, and a delegate that projects from a singleton of the collection to a string. There are two more overloads that allow you to specify a separator string.
+
+The following code uses all four overloads.
 
 ```csharp
 string[] numbers = { "one", "two", "three" };
@@ -128,7 +130,8 @@ Dim intNumbers As Integer() = {1, 2, 3}
 Console.WriteLine("{0}", intNumbers.StringConcatenate(Function(i) i.ToString()))
 Console.WriteLine("{0}", intNumbers.StringConcatenate(Function(i) i.ToString(), ":"))
 ```
- This example produces the following output:
+
+This example produces the following output:
 
 ```output
 onetwothree
@@ -414,7 +417,7 @@ StyleName:Normal ><
 StyleName:Code >Hello World<
 ```
 
- Note that this refactoring is a variant of refactoring into a pure function. The next topic will introduce the idea of factoring into pure functions in more detail.
+ Note that this refactoring is a variant of refactoring into a pure function. The next article will introduce the idea of factoring into pure functions in more detail.
 
 ## Next Steps
  The next example shows how to refactor this code in another way, by using pure functions:
