@@ -1,6 +1,6 @@
 ---
 title: Retrieve the text of the paragraphs - LINQ to XML
-description: Learn how to retrieve the text as a string from paragraph nodes from a WordprocessingML document.
+description: Learn how to find the paragraph nodes in a WordprocessingML document, and to retrieve the text from each node as a string.
 ms.date: 07/20/2015
 dev_langs:
   - "csharp"
@@ -14,17 +14,17 @@ This example builds on the previous example, [Retrieve the paragraphs and their 
 
 To retrieve the text, this example adds an additional query that iterates through the collection of anonymous types and projects a new collection of an anonymous type with the addition of a new member, `Text`. It uses the <xref:System.Linq.Enumerable.Aggregate%2A> standard query operator to concatenate multiple strings into one string.
 
-This technique (that is, first projecting to a collection of an anonymous type, then using this collection to project to a new collection of an anonymous type) is a common and useful one. This query could have been written without projecting to the first anonymous type. However, because of lazy evaluation, doing so does not use much additional processing power. The technique does create more short-lived objects on the heap, but this does not substantially degrade performance.
+This technique (that is, first projecting to a collection of an anonymous type, then using this collection to project to a new collection of an anonymous type) is a common and useful one. This query could have been written without projecting to the first anonymous type. However, because of lazy evaluation, doing so doesn't use much additional processing power. The technique does create more short-lived objects on the heap, but that doesn't substantially degrade performance.
 
-Of course, it would be possible to write a single query that contains the functionality to retrieve the paragraphs, the style of each paragraph, and the text of each paragraph. However, it often is useful to break up a more complicated query into multiple queries because the resulting code is more modular and easier to maintain. Further, if you need to reuse a portion of the query, it is easier to refactor if the queries are written in this manner.
+Of course, it would be possible to write a single query that contains the functionality to retrieve the paragraphs, the style of each paragraph, and the text of each paragraph. However, it's often useful to break up a more complicated query into multiple queries because the resulting code is more modular and easier to maintain. Further, if you need to reuse a portion of the query, it's easier to refactor if the queries are written in this manner.
 
-These queries, which are chained together, use the processing model that is examined in the article [Chain queries example](chain-queries-example.md).
+These queries, which are chained together, use the processing model that's examined in the article [Chain queries example](chain-queries-example.md).
 
-## Example: Determine the element not, style name, and text of each paragraph
+## Example: Determine the element node, style name, and text of each paragraph
 
 This example processes a WordprocessingML document, determining the element node, style name, and text of each paragraph. This example builds on the previous examples in this tutorial. The new query is called out in comments in the code below.
 
-For instructions for creating the source document for this example, see [Create the source Office Open XML document](create-source-office-open-xml-document.md).
+The instructions for creating the source document for this example are in [Create the source Office Open XML document](create-source-office-open-xml-document.md).
 
 This example uses classes from the WindowsBase assembly. It uses types in the <xref:System.IO.Packaging?displayProperty=nameWithType> namespace.
 
@@ -122,7 +122,7 @@ foreach (var p in paraWithText)
 Imports <xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
 
 Module Module1
-    ' Following function is required because Visual Basic does not support short circuit evaluation
+    ' Following function is required because Visual Basic doesn't support short circuit evaluation
     Private Function GetStyleOfParagraph(ByVal styleNode As XElement, _
                                          ByVal defaultStyle As String) As String
         If (styleNode Is Nothing) Then
@@ -247,11 +247,9 @@ StyleName:Normal ><
 StyleName:Code >Hello World<
 ```
 
-## Next Steps
+The next article in this tutorial shows how to use an extension method, instead of <xref:System.Linq.Enumerable.Aggregate%2A>, to concatenate multiple strings into a single string:
 
-The next article of the tutorial shows how to use an extension method, instead of <xref:System.Linq.Enumerable.Aggregate%2A>, to concatenate multiple strings into a single string:
-
-- [Refactor using an extension method](refactor-using-extension-method.md)
+- [Refactor using an extension method](refactor-extension-method.md)
 
 ## See also
 

@@ -1,25 +1,26 @@
 ---
 title: Refactor using an extension method - LINQ to XML
-description: Learn how to refactor the concatenation of strings using a pure function that is implemented as an extension method.
+description: Learn how to refactor the concatenation of strings using a pure function that's implemented as an extension method.
 ms.date: 07/20/2015
 dev_langs:
   - "csharp"
   - "vb"
 ms.assetid: c5fc123d-af10-4a2f-b8e4-db921efb2639
 ---
+
 # Refactor using an extension method (LINQ to XML)
 
-This example builds on the previous example, [Retrieve the text of the paragraphs](retrieve-text-paragraphs.md), by refactoring the concatenation of strings using a pure function that is implemented as an extension method.
+This example builds on the previous example, [Retrieve the text of the paragraphs](retrieve-text-paragraphs.md), by refactoring the concatenation of strings using a pure function that's implemented as an extension method.
 
-The previous example used the <xref:System.Linq.Enumerable.Aggregate%2A> standard query operator to concatenate multiple strings into one string. However, it is more convenient to write an extension method to do this, because the resulting query smaller and more simple.
+The previous example used the <xref:System.Linq.Enumerable.Aggregate%2A> standard query operator to concatenate multiple strings into one string. However, it's more convenient to write an extension method to do this, because the resulting query is smaller and simpler.
 
 ## Example: Retrieve the paragraphs, their styles, and their text
 
-This example processes a WordprocessingML document, retrieving the paragraphs and, for each paragraph, the style and the text. This example builds on the previous examples in this tutorial.
+This example processes a WordprocessingML document, retrieving the paragraphs and the style and text for each paragraph. This example builds on the previous examples in this tutorial.
 
 The example contains multiple overloads of the `StringConcatenate` method.
 
-You can find instructions for creating the source document for this example in [Create the source Office Open XML document](create-source-office-open-xml-document.md).
+The instructions for creating the source document for this example are in [Create the source Office Open XML document](create-source-office-open-xml-document.md).
 
 This example uses classes from the WindowsBase assembly. It uses types in the <xref:System.IO.Packaging?displayProperty=nameWithType> namespace.
 
@@ -107,7 +108,7 @@ End Function
 
 There are four overloads of the `StringConcatenate` method. One overload simply takes a collection of strings and returns a single string. Another overload can take a collection of any type, and a delegate that projects from a singleton of the collection to a string. There are two more overloads that allow you to specify a separator string.
 
-The following code uses all four overloads.
+The following code uses all four overloads:
 
 ```csharp
 string[] numbers = { "one", "two", "three" };
@@ -140,8 +141,9 @@ one:two:three:
 1:2:3:
 ```
 
-## Example
- Now, the example can be modified to take advantage of the new extension method:
+## Example: Use the new extension method
+
+Now the example can be modified to take advantage of the new extension method:
 
 ```csharp
 public static class LocalExtensions
@@ -315,7 +317,7 @@ Module Module1
         Return sb.ToString()
     End Function
 
-    ' Following function is required because Visual Basic does not support short circuit evaluation
+    ' Following function is required because Visual Basic doesn't support short circuit evaluation
     Private Function GetStyleOfParagraph(ByVal styleNode As XElement, _
                                          ByVal defaultStyle As String) As String
         If (styleNode Is Nothing) Then
@@ -396,8 +398,7 @@ Module Module1
 End Module
 ```
 
- This example produces the following output when applied to the document described in [Creating the Source Office Open XML Document (C#)](./creating-the-source-office-open-xml-document.md).
- This example produces the following output when applied to the document described in [Creating the Source Office Open XML Document (Visual Basic)](creating-the-source-office-open-xml-document.md).
+ This example produces the following output:
 
 ```output
 StyleName:Heading1 >Parsing WordprocessingML with LINQ to XML<
@@ -417,17 +418,11 @@ StyleName:Normal ><
 StyleName:Code >Hello World<
 ```
 
- Note that this refactoring is a variant of refactoring into a pure function. The next article will introduce the idea of factoring into pure functions in more detail.
+This refactoring is a variant of refactoring into a pure function. The next article in this tutorial shows in more detail how to refactor this code into pure functions:
 
-## Next Steps
- The next example shows how to refactor this code in another way, by using pure functions:
-
-- [Refactoring Using a Pure Function (Visual Basic)](../../../../visual-basic/programming-guide/concepts/linq/refactoring-using-a-pure-function.md)
+- [Refactor using a pure function](refactor-pure-function.md)
 
 ## See also
 
-- [Tutorial: Manipulating Content in a WordprocessingML Document (C#)](./shape-of-wordprocessingml-documents.md)
-- [Refactoring Into Pure Functions (C#)](./refactoring-into-pure-functions.md)
-
-- [Tutorial: Manipulating Content in a WordprocessingML Document (Visual Basic)](../../../../visual-basic/programming-guide/concepts/linq/tutorial-manipulating-content-in-a-wordprocessingml-document.md)
-- [Refactoring Into Pure Functions (Visual Basic)](../../../../visual-basic/programming-guide/concepts/linq/refactoring-into-pure-functions.md)
+- [Tutorial: Manipulate content in a WordprocessingML document](xml-shape-wordprocessingml-documents.md)
+- [Refactor into pure functions](refactor-pure-functions.md)

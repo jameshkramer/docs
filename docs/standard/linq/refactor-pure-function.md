@@ -1,23 +1,23 @@
 ---
 title: Refactor using a pure function - LINQ to XML
-description:
+description: Learn how to refactor using a pure function
 ms.date: 07/20/2015
 dev_langs:
   - "csharp"
   - "vb"
 ms.assetid: a3416a45-9e12-4e4a-9747-897f06eef510
 ---
-# Refactoring Using a Pure Function (C#)
-The following example refactors the previous example, [Refactoring Using an Extension Method (C#)](./refactoring-using-an-extension-method.md), to use a pure function In this example, the code to find the text of a paragraph is moved to the pure static method `ParagraphText`.
-The following example refactors the previous example, [Refactoring Using an Extension Method (Visual Basic)](../../../../visual-basic/programming-guide/concepts/linq/refactoring-using-an-extension-method.md), to use a pure function In this example, the code to find the text of a paragraph is moved to the pure static method `ParagraphText`.
+# Refactor using a pure function (LINQ to XML)
 
-## Example
- This example processes a WordprocessingML document, retrieving the paragraph nodes from a WordprocessingML document. It also identifies the style of each paragraph. This example builds on the previous examples in this tutorial. The refactored code is called out in comments in the code below.
+The following example refactors the previous example, [Refactor using an extension method](refactor-extension-method.md), to use a pure function. It moves the code that finds the text of a paragraph to the pure static method `ParagraphText`.
 
- For instructions for creating the source document for this example, see [Creating the Source Office Open XML Document (C#)](./creating-the-source-office-open-xml-document.md).
- For instructions for creating the source document for this example, see [Creating the Source Office Open XML Document (Visual Basic)](../../../../visual-basic/programming-guide/concepts/linq/creating-the-source-office-open-xml-document.md).
+## Example: Retrieve the paragraph nodes and their styles
 
- This example uses classes from the WindowsBase assembly. It uses types in the <xref:System.IO.Packaging?displayProperty=nameWithType> namespace.
+This example processes a WordprocessingML document, retrieving the paragraph nodes. It also identifies the style of each paragraph. This example builds on the previous examples in this tutorial. The refactored code is called out in comments in the code below.
+
+The instructions for creating the source document for this example are in [Create the source Office Open XML document](create-source-office-open-xml-document.md).
+
+This example uses classes from the WindowsBase assembly. It uses types in the <xref:System.IO.Packaging?displayProperty=nameWithType> namespace.
 
 ```csharp
 public static class LocalExtensions
@@ -202,7 +202,7 @@ Module Module1
         Return (e.<w:r>.<w:t>).StringConcatenate(Function(element) CStr(element))
     End Function
 
-    ' Following function is required because Visual Basic does not support short circuit evaluation
+    ' Following function is required because Visual Basic doesn't support short circuit evaluation
     Private Function GetStyleOfParagraph(ByVal styleNode As XElement, _
                                          ByVal defaultStyle As String) As String
         If styleNode Is Nothing Then
@@ -282,7 +282,7 @@ Module Module1
 End Module
 ```
 
- This example produces the same output as before the refactoring:
+This example produces the same output as before the refactoring:
 
 ```output
 StyleName:Heading1 >Parsing WordprocessingML with LINQ to XML<
@@ -320,18 +320,12 @@ StyleName:Normal ><
 StyleName:Code >Hello World<
 ```
 
-### Next Steps
- The next example shows how to project XML into a different shape:
+The next article in this tutorial shows how to project XML into a different shape:
 
-- [Projecting XML in a Different Shape (C#)](./projecting-xml-in-a-different-shape.md)
-- [Projecting XML in a Different Shape (Visual Basic)](../../../../visual-basic/programming-guide/concepts/linq/projecting-xml-in-a-different-shape.md)
+- [Project XML in a different shape](project-xml-different-shape.md)
 
 ## See also
 
-- [Tutorial: Manipulating Content in a WordprocessingML Document (C#)](./shape-of-wordprocessingml-documents.md)
-- [Refactoring Using an Extension Method (C#)](./refactoring-using-an-extension-method.md)
-- [Refactoring Into Pure Functions (C#)](./refactoring-into-pure-functions.md)
-
-- [Tutorial: Manipulating Content in a WordprocessingML Document (Visual Basic)](../../../../visual-basic/programming-guide/concepts/linq/tutorial-manipulating-content-in-a-wordprocessingml-document.md)
-- [Refactoring Using an Extension Method (Visual Basic)](../../../../visual-basic/programming-guide/concepts/linq/refactoring-using-an-extension-method.md)
-- [Refactoring Into Pure Functions (Visual Basic)](../../../../visual-basic/programming-guide/concepts/linq/refactoring-into-pure-functions.md)
+- [Tutorial: Manipulate content in a WordprocessingML document](xml-shape-wordprocessingml-documents.md)
+- [Refactor using an extension method](refactor-extension-method.md)
+- [Refactor into pure functions](refactor-pure-functions.md)
