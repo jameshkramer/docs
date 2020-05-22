@@ -1,6 +1,6 @@
 ---
 title: Style part of a WordprocessingML document - LINQ to XML
-description: 
+description: See an example of XML that makes up the style part of an Office Open XML WordprocessingML document.
 ms.date: 07/20/2015
 dev_langs:
   - "csharp"
@@ -24,7 +24,7 @@ The default paragraph style has an element with the following opening tag:
 
 You need to know this information when you write the query to find the default style identifier, so that the query can identify the style of paragraphs that have the default style.
 
-Note that these documents are very simple when compared to typical documents that Microsoft Word generates. In many cases, Word saves a great deal of additional information, additional formatting and metadata. Furthermore, Word doesn't format the lines to be easily readable as in this example; instead, the XML is saved without indentation. However, all WordprocessingML documents share the same basic XML shape. Because of this, the queries presented in this tutorial will work with more complicated documents.
+Note that these documents are very simple when compared to typical documents that Microsoft Word generates. In many cases, Word saves a great deal of additional information, additional formatting, and metadata. Furthermore, Word doesn't format the lines to be easily readable as in this example; instead, the XML is saved without indentation. However, all WordprocessingML documents share the same basic XML shape. Because of this, the queries presented in this section will work with more complicated documents.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>

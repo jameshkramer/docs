@@ -14,7 +14,7 @@ This article extends the previous queries to find all occurrences of a string in
 
 ## Example: Find all occurrences of a string in a WordProcessingML document
 
-This example finds all occurrences in the WordprocessingML document of a specific piece of text (the string "Hello"). The example builds on the previous examples in this tutorial. The added query is pointed out by comments in the code.
+This example finds all occurrences in a WordprocessingML document of a specific piece of text (the string "Hello"). The example builds on the previous examples in this tutorial. The added query is pointed out by comments in the code.
 
 The instructions for creating the source document for this example are in [Create the source Office Open XML document](create-source-office-open-xml-document.md).
 
