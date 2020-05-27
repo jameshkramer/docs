@@ -1,6 +1,6 @@
 ---
 title: How to change the namespace for an entire XML tree - LINQ to XML
-description:
+description: Learn how to change the namespace for an entire XML tree.
 ms.date: 07/20/2015
 dev_langs:
   - "csharp"
@@ -10,12 +10,13 @@ ms.assetid: 1584ff3b-c77d-4241-ab62-80adfb7bfc1b
 
 # How to change the namespace for an entire XML tree (LINQ to XML)
 
-You sometimes have to programmatically change the namespace for an element or an attribute. LINQ to XML makes this easy. The <xref:System.Xml.Linq.XElement.Name%2A?displayProperty=nameWithType> property can be set. The <xref:System.Xml.Linq.XAttribute.Name%2A?displayProperty=nameWithType> property cannot be set, but you can easily copy the attributes into a <xref:System.Collections.Generic.List%601?displayProperty=nameWithType>, remove the existing attributes, and then add new attributes that are in the new desired namespace.
+You sometimes have to programmatically change the namespace for an element or an attribute. LINQ to XML makes this easy. The <xref:System.Xml.Linq.XElement.Name%2A?displayProperty=nameWithType> property can be set. The <xref:System.Xml.Linq.XAttribute.Name%2A?displayProperty=nameWithType> property can't be set, but you can easily copy the attributes into a <xref:System.Collections.Generic.List%601?displayProperty=nameWithType>, remove the existing attributes, and then add new attributes that are in the new desired namespace.
 
- For more information, see [Namespaces Overview (LINQ to XML) (C#)](namespaces-overview-linq-to-xml.md).
+ For more information, see [Namespaces overview](namespaces-overview.md).
 
-## Example
- The following code creates two XML trees in no namespace. It then changes the namespace of each of the trees, and combines them into a single tree.
+## Example: Create two XML trees, change the namespaces, and combine the trees
+
+The following code creates two XML trees in no namespace. It then changes the namespace of each of the trees, and combines them into a single tree.
 
 ```csharp
 XElement tree1 = new XElement("Data",
@@ -110,7 +111,7 @@ Dim root As XElement = _
 Console.WriteLine(root)
 ```
 
- This example produces the following output:
+This example produces the following output:
 
 ```xml
 <Root>

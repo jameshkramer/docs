@@ -1,6 +1,6 @@
 ---
 title: Maintain name-value pairs - LINQ to XML
-description:
+description: Learn how to use LINQ to XML methods to maintain a set of name-value pairs.
 ms.date: 07/20/2015
 dev_langs:
   - "csharp"
@@ -12,23 +12,23 @@ ms.assetid: 7b04b0f1-af64-42eb-8737-83f8861b5915
 
 Many applications have to maintain information that is best kept as name-value pairs. This information might be configuration information or global settings. LINQ to XML contains methods that make it easy to maintain a set of name-value pairs. You can either keep the information as attributes or as a set of child elements.
 
-One difference between keeping the information as attributes or as child elements is that attributes have the constraint that there can be only one attribute with a particular name for an element. This limitation does not apply to child elements.
+One difference between keeping the information as attributes or as child elements is that attributes have the constraint that there can be only one attribute with a particular name for an element. This limitation doesn't apply to child elements.
 
 ## SetAttributeValue and SetElementValue
 
 The two methods that facilitate keeping name-value pairs are <xref:System.Xml.Linq.XElement.SetAttributeValue%2A> and <xref:System.Xml.Linq.XElement.SetElementValue%2A>. These two methods have similar semantics.
 
-<xref:System.Xml.Linq.XElement.SetAttributeValue%2A> can add, modify, or remove attributes of an element.
+<xref:System.Xml.Linq.XElement.SetAttributeValue%2A> can add, modify, and remove attributes of an element.
 
-- If you call <xref:System.Xml.Linq.XElement.SetAttributeValue%2A> with a name of an attribute that does not exist, the method creates a new attribute and adds it to the specified element.
+- If you call <xref:System.Xml.Linq.XElement.SetAttributeValue%2A> with a name of an attribute that doesn't exist, the method creates a new attribute and adds it to the specified element.
 - If you call <xref:System.Xml.Linq.XElement.SetAttributeValue%2A> with a name of an existing attribute and with some specified content, the contents of the attribute are replaced with the specified content.
-- If you call <xref:System.Xml.Linq.XElement.SetAttributeValue%2A> with a name of an existing attribute, and specify null for the content, the attribute is removed from its parent.
+- If you call <xref:System.Xml.Linq.XElement.SetAttributeValue%2A> with a name of an existing attribute, and specify `null` for the content, the attribute is removed from its parent.
 
-<xref:System.Xml.Linq.XElement.SetElementValue%2A> can add, modify, or remove child elements of an element.
+<xref:System.Xml.Linq.XElement.SetElementValue%2A> can add, modify, and remove child elements of an element.
 
-- If you call <xref:System.Xml.Linq.XElement.SetElementValue%2A> with a name of a child element that does not exist, the method creates a new element and adds it to the specified element.
+- If you call <xref:System.Xml.Linq.XElement.SetElementValue%2A> with a name of a child element that doesn't exist, the method creates a new element and adds it to the specified element.
 - If you call <xref:System.Xml.Linq.XElement.SetElementValue%2A> with a name of an existing element and with some specified content, the contents of the element are replaced with the specified content.
-- If you call <xref:System.Xml.Linq.XElement.SetElementValue%2A> with a name of an existing element, and specify null for the content, the element is removed from its parent.
+- If you call <xref:System.Xml.Linq.XElement.SetElementValue%2A> with a name of an existing element, and specify `null` for the content, the element is removed from its parent.
 
 ## Example: Use `SetAttributeValue` to create and maintain a list of name-value pairs
 

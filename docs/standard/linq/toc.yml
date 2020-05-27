@@ -298,8 +298,8 @@
           href: linq-xml-events.md
         - name: Program with nodes
           href: program-nodes.md
-        - name: Mixed declarative code-imperative code bugs
-          href: mixed-declarative-code-imperative-code-bugs.md
+        - name: Mixed declarative/imperative code bugs
+          href: mixed-declarative-imperative-code-bugs.md
         - name: How to stream XML fragments with access to header information
           href: stream-xml-fragments-access-header-information.md
         - name: How to perform streaming transform of large XML documents
