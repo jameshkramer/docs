@@ -1,7 +1,7 @@
 ---
 title: How to find elements with a specific attribute - LINQ to XML
 description: "Learn how to find all elements that have a specific attribute (regardless of value). Two methods are shown: one uses XPathEvaluate, the other uses LINQ to XML query."
-mms.date: 07/20/2015
+ms.date: 07/20/2015
 dev_langs:
   - "csharp"
   - "vb"
