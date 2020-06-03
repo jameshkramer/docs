@@ -1,6 +1,6 @@
 ---
 title: How to stream XML fragments with access to header information - LINQ to XML
-description:
+description: Learn how to implement and use a custom axis method that streams XML fragments from the file specified by a URI.
 ms.date: 07/20/2015
 dev_langs:
   - "csharp"

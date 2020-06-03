@@ -20,15 +20,15 @@ Mixing these styles of code in the same operation is what leads to problems. Con
 
 Suppose you have a linked list with three items in it (a, b, and c):
 
-`a -> b -> c`
+> a -> b -> c
 
 Now, suppose that you want to move through the linked list, adding three new items (a', b', and c'). You want the resulting linked list to look like this:
 
-`a -> a' -> b -> b' -> c -> c'`
+ > a -> a' -> b -> b' -> c -> c'
 
-So you write code that iterates through the list, and for every item, adds a new item right after it. What happens is that your code will first see the `a` element, and insert `a'` after it. Now, your code will move to the next node in the list, which is now `a'`! It happily adds a new item to the list, `a''`.
+So you write code that iterates through the list, and for every item, adds a new item right after it. What happens is that your code will first see the `a` element, and insert `a'` after it. Now, your code will move to the next node in the list, which is now `a'`, so it adds a new item between a' and b to the list!
 
-How would you solve this in the real world? Well, you might make a copy of the original linked list, and create a completely new list. Or if you're writing purely imperative code, you might find the first item, add the new item, and then advance twice in the linked list, advancing over the element that you just added.
+How would you solve this? Well, you might make a copy of the original linked list, and create a completely new list. Or if you're writing purely imperative code, you might find the first item, add the new item, and then advance twice in the linked list, advancing over the element that you just added.
 
 ## Example: Adding while iterating
 
@@ -191,7 +191,7 @@ root.RemoveAll()
 Console.WriteLine(root)
 ```
 
-## Example: Why LINQ can't automatically handle this
+## Example: Why LINQ can't automatically handle these issues
 
 One approach would be to always bring everything into memory instead of doing lazy evaluation. However, it would be very expensive in terms of performance and memory use. In fact, if LINQ, and LINQ to XML, were to take this approach, it would fail in real-world situations.
 
