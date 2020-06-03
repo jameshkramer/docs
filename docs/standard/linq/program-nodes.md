@@ -1,6 +1,6 @@
 ---
 title: Programming with nodes - LINQ to XML
-description:
+description: Learn how to code at the node level of an XML tree.
 ms.date: 07/20/2015
 dev_langs:
   - "csharp"
@@ -8,15 +8,13 @@ dev_langs:
 ms.assetid: c38df0f2-c805-431a-93ff-9103a4284c2f
 ---
 
-# Programming with Nodes (LINQ to XML)
+# Programming with nodes (LINQ to XML)
 
-LINQ to XML developers who need to write programs such as an XML editor, a transform system, or a report writer often need to write programs that work at a finer level of granularity than elements and attributes. They often need to work at the node level, manipulating text nodes, processing instructions, and comments. This topic provides some details about programming at the node level.
+LINQ to XML developers who need to write programs such as an XML editor, a transform system, or a report writer often need code that works at a finer level of granularity than elements and attributes. They often need to work at the node level, manipulating text nodes, processing instructions, and processing comments. This topic provides information about programming at the node level.
 
-There are a number of details of programming, discussed in the following sections, that a programmer working at the node level should know.
+## Example: The `Parent` property values of the child nodes of XDocument are set to `null`
 
-## Example: The `Parent` property of the child nodes of XDocument is set to `null`
-
-The <xref:System.Xml.Linq.XObject.Parent%2A> property contains the parent <xref:System.Xml.Linq.XElement>, not the parent node. Child nodes of <xref:System.Xml.Linq.XDocument> have no parent <xref:System.Xml.Linq.XElement>. Their parent is the document, so the <xref:System.Xml.Linq.XObject.Parent%2A> property for those nodes is set to null.
+The <xref:System.Xml.Linq.XObject.Parent%2A> property contains the parent <xref:System.Xml.Linq.XElement>, not the parent node. Child nodes of <xref:System.Xml.Linq.XDocument> have no parent <xref:System.Xml.Linq.XElement>. Their parent is the document, so the <xref:System.Xml.Linq.XObject.Parent%2A> property for those nodes is set to `null`.
 
 The following example demonstrates this:
 
@@ -39,18 +37,16 @@ True
 True
 ```
 
-## Example: Show that adding text may or may not create a new text node
+## Example: Adding text may or may not create a new text node
 
-In a number of XML programming models, adjacent text nodes are always merged. This is sometimes called normalization of text nodes. LINQ to XML does not normalize text nodes. If you add two text nodes to the same element, it will result in adjacent text nodes. However, if you add content specified as a string rather than as an <xref:System.Xml.Linq.XText> node, LINQ to XML might merge the string with an adjacent text node.
-
-The following example demonstrates this:
+In a number of XML programming models, adjacent text nodes are always merged. This is sometimes called normalization of text nodes. LINQ to XML doesn't normalize text nodes. If you add two text nodes to the same element, it will result in adjacent text nodes. However, if you add content specified as a string rather than as an <xref:System.Xml.Linq.XText> node, LINQ to XML might merge the string with an adjacent text node. The following example demonstrates this.
 
 ```csharp
 XElement xmlTree = new XElement("Root", "Content");
 
 Console.WriteLine(xmlTree.Nodes().OfType<XText>().Count());
 
-// this does not add a new text node
+// this doesn't add a new text node
 xmlTree.Add("new content");
 Console.WriteLine(xmlTree.Nodes().OfType<XText>().Count());
 
@@ -63,7 +59,7 @@ Console.WriteLine(xmlTree.Nodes().OfType<XText>().Count());
 Dim xmlTree As XElement = <Root>Content</Root>
 Console.WriteLine(xmlTree.Nodes().OfType(Of XText)().Count())
 
-' This does not add a new text node.
+' This doesn't add a new text node.
 xmlTree.Add("new content")
 Console.WriteLine(xmlTree.Nodes().OfType(Of XText)().Count())
 
@@ -80,15 +76,15 @@ Console.WriteLine(xmlTree.Nodes().OfType(Of XText)().Count())
 2
 ```
 
-## Example: Setting a text node value to the empty string does not delete the node
+## Example: Setting a text node value to the empty string doesn't delete the node
 
-In some XML programming models, text nodes are guaranteed to not contain the empty string. The reasoning is that such a text node has no impact on serialization of the XML. However, for the same reason that adjacent text nodes are possible, if you remove the text from a text node by setting its value to the empty string, the text node itself will not be deleted.
+In some XML programming models, text nodes are guaranteed to not contain the empty string. The reasoning is that such a text node has no impact on serialization of the XML. However, for the same reason that adjacent text nodes are possible, if you remove the text from a text node by setting its value to the empty string, the text node itself won't be deleted.
 
 ```csharp
 XElement xmlTree = new XElement("Root", "Content");
 XText textNode = xmlTree.Nodes().OfType<XText>().First();
 
-// the following line does not cause the removal of the text node.
+// the following line doesn't cause the removal of the text node.
 textNode.Value = "";
 
 XText textNode2 = xmlTree.Nodes().OfType<XText>().First();
@@ -99,7 +95,7 @@ Console.WriteLine(">>{0}<<", textNode2);
 Dim xmlTree As XElement = <Root>Content</Root>
 Dim textNode As XText = xmlTree.Nodes().OfType(Of XText)().First()
 
-' The following line does not cause the removal of the text node.
+' The following line doesn't cause the removal of the text node.
 textNode.Value = ""
 
 Dim textNode2 As XText = xmlTree.Nodes().OfType(Of XText)().First()
@@ -112,9 +108,9 @@ This example produces the following output:
 >><<
 ```
 
-## An element with one empty text node is serialized differently from one with no text node.
+## Example: An element with one empty text node is serialized differently from one with no text node
 
-If an element contains only a child text node that is empty, it is serialized with the long tag syntax: `<Child></Child>`. If an element contains no child nodes whatsoever, it is serialized with the short tag syntax: `<Child />`.
+If an element contains only a child text node that's empty, it's serialized with the long tag syntax: `<Child></Child>`. If an element contains no child nodes whatsoever, it's serialized with the short tag syntax: `<Child />`.
 
 ```csharp
 XElement child1 = new XElement("Child1",
@@ -141,9 +137,9 @@ This example produces the following output:
 <Child2 />
 ```
 
-##Example: Namespaces are ttributes in the LINQ to XML tree
+## Example: Namespaces are attributes in the LINQ to XML tree
 
-Even though namespace declarations have identical syntax to attributes, in some programming interfaces, such as XSLT and XPath, namespace declarations are not considered to be attributes. However, in LINQ to XML, namespaces are stored as <xref:System.Xml.Linq.XAttribute> objects in the XML tree. If you iterate through the attributes of an element that contains a namespace declaration, the namespace declaration is one of the items in the returned collection. The <xref:System.Xml.Linq.XAttribute.IsNamespaceDeclaration%2A> property indicates whether an attribute is a namespace declaration.
+Even though namespace declarations have identical syntax to attributes, in some programming interfaces, such as XSLT and XPath, namespace declarations aren't considered to be attributes. However, in LINQ to XML, namespaces are stored as <xref:System.Xml.Linq.XAttribute> objects in the XML tree. If you iterate through the attributes of an element that contains a namespace declaration, the namespace declaration is one of the items in the returned collection. The <xref:System.Xml.Linq.XAttribute.IsNamespaceDeclaration%2A> property indicates whether an attribute is a namespace declaration.
 
 ```csharp
 XElement root = XElement.Parse(
@@ -175,12 +171,12 @@ xmlns:fc="www.fourthcoffee.com"  IsNamespaceDeclaration:True
 AnAttribute="abc"  IsNamespaceDeclaration:False
 ```
 
-##Example: XPath axis methods do not return the child text nodes of XDocument
+## Example: XPath axis methods don't return the child text nodes of XDocument
 
-LINQ to XML allows for child text nodes of an <xref:System.Xml.Linq.XDocument>, as long as the text nodes contain only white space. However, the XPath object model does not include white space as child nodes of a document, so when you iterate through the children of an <xref:System.Xml.Linq.XDocument> using the <xref:System.Xml.Linq.XContainer.Nodes%2A> axis, white-space text nodes will be returned. However, when you iterate through the children of an <xref:System.Xml.Linq.XDocument> using the XPath axis methods, white-space text nodes will not be returned.
+LINQ to XML allows for child text nodes of an <xref:System.Xml.Linq.XDocument>, as long as the text nodes contain only white space. However, the XPath object model doesn't include white space as child nodes of a document, so when you iterate through the children of an <xref:System.Xml.Linq.XDocument> using the <xref:System.Xml.Linq.XContainer.Nodes%2A> axis, white space text nodes will be returned. However, when you iterate through the children of an <xref:System.Xml.Linq.XDocument> using the XPath axis methods, white space text nodes won't be returned.
 
 ```csharp
-// Create a document with some white-space child nodes of the document.
+// Create a document with some white space child nodes of the document.
 XDocument root = XDocument.Parse(
 @"<?xml version='1.0' encoding='utf-8' standalone='yes'?>
 
@@ -189,10 +185,10 @@ XDocument root = XDocument.Parse(
 <!--a comment-->
 ", LoadOptions.PreserveWhitespace);
 
-// count the white-space child nodes using LINQ to XML
+// count the white space child nodes using LINQ to XML
 Console.WriteLine(root.Nodes().OfType<XText>().Count());
 
-// count the white-space child nodes using XPathEvaluate
+// count the white space child nodes using XPathEvaluate
 Console.WriteLine(((IEnumerable)root.XPathEvaluate("text()")).OfType<XText>().Count());
 ```
 
@@ -220,7 +216,7 @@ This example produces the following output:
 
 ### The XML declaration node of an XDocument is a property, not a child node
 
-When you iterate through the child nodes of an <xref:System.Xml.Linq.XDocument>, you will not see the XML declaration object. It is a property of the document, not a child node of it.
+When you iterate through the child nodes of an <xref:System.Xml.Linq.XDocument>, you won't see the XML declaration object. It's a property of the document, not a child node of it.
 
 ```csharp
 XDocument doc = new XDocument(

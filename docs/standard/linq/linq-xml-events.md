@@ -1,6 +1,6 @@
 ---
 title: LINQ to XML events - LINQ to XML
-description:
+description: Learn how to use XML events to monitor changes to an XML tree.
 ms.date: 07/20/2015
 dev_langs:
   - "csharp"
@@ -16,7 +16,7 @@ You can add events to an instance of any <xref:System.Xml.Linq.XObject>. The eve
 
 For examples of LINQ to XML events, see <xref:System.Xml.Linq.XObject.Changing> and <xref:System.Xml.Linq.XObject.Changed>.
 
-## Types and Events
+## Types and events
 
 You use the following types when working with events:
 
@@ -34,7 +34,7 @@ The following events are raised when you modify an XML tree:
 
 ## Example: Use events to maintain a proper total when items are changed
 
-Events are useful when you want to maintain some aggregate information in an XML tree. For example, you may want maintain an invoice total that is the sum of the line items of the invoice. This example uses events to maintain the total of all of the child elements under the complex element `Items`.
+Events are useful when you want to maintain some aggregate information in an XML tree. For example, you may want to maintain an invoice total that's the sum of the line items of the invoice. This example uses events to maintain the total of all of the child elements under the complex element `Items`.
 
 ```csharp
 XElement root = new XElement("Root",
@@ -127,7 +127,7 @@ Module Module1
 End Module
 ```
 
-This code produces the following output:
+This example produces the following output:
 
 ```output
 Changed System.Xml.Linq.XElement Add

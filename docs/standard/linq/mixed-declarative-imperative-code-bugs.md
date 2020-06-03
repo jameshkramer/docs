@@ -1,6 +1,6 @@
 ---
 title: Mixed declarative/imperative code bugs - LINQ to XML
-description:
+description: Learn how to recognize and avoid problems that can occur when code iterates along an axis making changes.
 ms.date: 07/20/2015
 dev_langs:
   - "csharp"
@@ -8,13 +8,13 @@ dev_langs:
 ms.assetid: fada62d0-0680-4e73-945a-2b00d7a507af
 ---
 
-# Mixed Declarative Code/Imperative Code Bugs (LINQ to XML) (LINQ to XML)
+# Mixed declarative/imperative code bugs (LINQ to XML)
 
-LINQ to XML contains various methods that allow you to modify an XML tree directly. You can add elements, delete elements, change the contents of an element, add attributes, and so on. This programming interface is described in [Modify XML trees](in-memory-xml-tree-modification-vs-functional-construction.md). If you are iterating through one of the axes, such as <xref:System.Xml.Linq.XContainer.Elements%2A>, and you are modifying the XML tree as you iterate through the axis, you can end up with some strange bugs.
+LINQ to XML contains various methods that allow you to modify an XML tree directly. You can add elements, delete elements, change the contents of an element, add attributes, and so on. This programming interface is described in [Modify XML trees](in-memory-xml-tree-modification-vs-functional-construction.md). If you're iterating through one of the axes, such as <xref:System.Xml.Linq.XContainer.Elements%2A>, and you're modifying the XML tree as you iterate through the axis, you can end up with some strange bugs.
 
 This problem is sometimes known as "The Halloween Problem".
 
-When you write some code using LINQ that iterates through a collection, you are writing code in a declarative style. It is more akin to describing *what* you want, rather that *how* you want to get it done. If you write code that 1) gets the first element, 2) tests it for some condition, 3) modifies it, and 4) puts it back into the list, then this would be imperative code. You are telling the computer *how* to do what you want done.
+When you write some code using LINQ that iterates through a collection, you're writing code in a declarative style. It's more akin to describing *what* you want, rather that *how* you want to get it done. If you write code that 1) gets the first element, 2) tests it for some condition, 3) modifies it, and 4) puts it back into the list, then this would be imperative code. You're telling the computer *how* to do what you want done.
 
 Mixing these styles of code in the same operation is what leads to problems. Consider the following:
 
@@ -28,11 +28,11 @@ Now, suppose that you want to move through the linked list, adding three new ite
 
 So you write code that iterates through the list, and for every item, adds a new item right after it. What happens is that your code will first see the `a` element, and insert `a'` after it. Now, your code will move to the next node in the list, which is now `a'`! It happily adds a new item to the list, `a''`.
 
-How would you solve this in the real world? Well, you might make a copy of the original linked list, and create a completely new list. Or if you are writing purely imperative code, you might find the first item, add the new item, and then advance twice in the linked list, advancing over the element that you just added.
+How would you solve this in the real world? Well, you might make a copy of the original linked list, and create a completely new list. Or if you're writing purely imperative code, you might find the first item, add the new item, and then advance twice in the linked list, advancing over the element that you just added.
 
 ## Example: Adding while iterating
 
-For example, suppose you want to write some code that for every element in a tree, you want to create a duplicate element:
+For example, suppose you want to write code to create a duplicate of every element in a tree:
 
 ```csharp
 XElement root = new XElement("Root",
@@ -125,7 +125,7 @@ Next
 Console.WriteLine(root)
 ```
 
-However, this does not do what you want. In this situation, after you have removed the first element, A, it is removed from the XML tree contained in root, and the code in the Elements method that is doing the iterating cannot find the next element.
+However, this doesn't do what you want. In this situation, after you have removed the first element, A, it's removed from the XML tree contained in root, and the code in the Elements method that does the iterating cannot find the next element.
 
 This example produces the following output:
 
@@ -191,11 +191,11 @@ root.RemoveAll()
 Console.WriteLine(root)
 ```
 
-##Example: Why LINQ can't automatically handle this
+## Example: Why LINQ can't automatically handle this
 
-One approach would be to always bring everything into memory instead of doing lazy evaluation. However, it would be very expensive in terms of performance and memory use. In fact, if LINQ and, LINQ to XML, were to take this approach, it would fail in real-world situations.
+One approach would be to always bring everything into memory instead of doing lazy evaluation. However, it would be very expensive in terms of performance and memory use. In fact, if LINQ, and LINQ to XML, were to take this approach, it would fail in real-world situations.
 
-Another possible approach would be to put in some sort of transaction syntax into LINQ, and have the compiler attempt to analyze the code and determine if any particular collection needed to be materialized. However, attempting to determine all code that has side-effects is incredibly complex. Consider the following code:
+Another possible approach would be to put some sort of transaction syntax into LINQ, and have the compiler attempt to analyze the code to determine if any particular collection needed to be materialized. However, attempting to determine all code that has side-effects is incredibly complex. Consider the following code:
 
 ```csharp
 var z =
@@ -213,13 +213,13 @@ Dim z = _
 
 Such analysis code would need to analyze the methods TestSomeCondition and DoMyProjection, and all methods that those methods called, to determine if any code had side-effects. But the analysis code could not just look for any code that had side-effects. It would need to select for just the code that had side-effects on the child elements of `root` in this situation.
 
-LINQ to XML does not attempt to do any such analysis. It is up to you to avoid these problems.
+LINQ to XML doesn't attempt to do any such analysis. It's up to you to avoid these problems.
 
-## Example: Use declarative code to generate a new XML tree than modify the existing tree.
+## Example: Use declarative code to generate a new XML tree rather than modify the existing tree
 
-To avoid these problems, do not mix declarative and imperative code, even if you know exactly the semantics of your collections and the semantics of the methods that modify the XML tree, if you write some clever code that avoids these categories of problems, your code will need to be maintained by other developers in the future, and they may not be as clear on the issues. If you mix declarative and imperative coding styles, your code will be more brittle.  If you write code that materializes a collection so that these problems are avoided, note it with comments as appropriate in your code, so that maintenance programmers will understand the issue.
+To avoid such problems, don't mix declarative and imperative code, even if you know exactly the semantics of your collections and the semantics of the methods that modify the XML tree. If you write code that avoids problems, your code will need to be maintained by other developers in the future, and they may not be as clear on the issues. If you mix declarative and imperative coding styles, your code will be more brittle.  If you write code that materializes a collection so that these problems are avoided, note it with comments as appropriate in your code, so that maintenance programmers will understand the issue.
 
-If performance and other considerations allow, use only declarative code. Don't modify your existing XML tree. Generate a new one as shown in the following example:
+If performance and other considerations allow, use only declarative code. Don't modify your existing XML tree. Instead, generate a new one as shown in the following example:
 
 ```csharp
 XElement root = new XElement("Root",
